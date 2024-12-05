@@ -1,0 +1,18 @@
+.footer{
+    height: 100px;
+    width: 100vw;
+    background-color: var(--azul);
+    position: absolute;
+    bottom: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-content > p{
+    color: var(--brancoLeve);
+    font-size: 25px;
+    font-family: "Roboto Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
