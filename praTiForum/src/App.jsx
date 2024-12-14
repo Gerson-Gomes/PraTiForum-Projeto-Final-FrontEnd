@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import MainContent from "./sections/main-home/organisms/MainContent/MainContent"
 import Footer from "./layouts/footer"
 import './assets/styles/App.css'
 
@@ -7,7 +8,7 @@ function App() {
 
   return (
     <>
-
+      <MainContent />
       <Footer />
     </>
   )

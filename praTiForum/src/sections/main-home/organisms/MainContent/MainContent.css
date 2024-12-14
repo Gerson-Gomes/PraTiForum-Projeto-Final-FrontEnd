@@ -1,0 +1,16 @@
+/* MainContent.css */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 146px 68px 200px 279px;
+    gap: 100px;
+  }
+  
+  .text-and-buttons {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+  }  
