@@ -1,0 +1,7 @@
+/* TitleAndText.css */
+.title-and-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 22px;
+  }  
