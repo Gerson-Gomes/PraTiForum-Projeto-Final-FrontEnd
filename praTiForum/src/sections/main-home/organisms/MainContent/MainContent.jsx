@@ -1,9 +1,9 @@
 // MainContent.jsx
 import React from 'react';
-import TitleAndText from '../molecules/TitleAndText/TitleAndText.jsx';
-import ButtonGroup from '../molecules/ButtonGroup/ButtonGroup.jsx';
-import Image from '../atoms/Image';
-import "../MainContent.css";
+import TitleAndText from '../../molecules/TitleAndText/TitleAndText';
+import ButtonGroup from '../../molecules/ButtonGroup/ButtonGroup';
+import Image from '../../atoms/image/Image';
+import "./MainContent.css";
 
 function MainContent() {
   return (
