@@ -1,6 +1,6 @@
 import React from 'react';
-import Heading from '../atoms/Heading';
-import Paragraph from '../atoms/Paragraph';
+import Heading from '../../atoms/heading/Heading';
+import Paragraph from '../../atoms/paragraph/Paragraph';
 
 function TitleAndText() {
   return (
