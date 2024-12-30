@@ -3,6 +3,7 @@ import React from 'react';
 import TitleAndText from '../../molecules/TitleAndText/TitleAndText';
 import ButtonGroup from '../../molecules/ButtonGroup/ButtonGroup';
 import Image from '../../atoms/image/Image';
+import maisPraTi from '../../assets/mais-pra-ti.png';
 import "./MainContent.css";
 
 function MainContent() {
@@ -12,7 +13,7 @@ function MainContent() {
         <TitleAndText />
         <ButtonGroup />
       </section>
-      <Image src="../assets/mais-pra-ti.png" alt="" />
+      <Image src={maisPraTi} alt="" />
     </main>
   );
 }
