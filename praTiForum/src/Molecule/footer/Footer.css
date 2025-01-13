@@ -1,0 +1,18 @@
+.footer {
+  height: 80px;
+  width: 100vw;
+  background-color: rgb(0, 95, 188);
+  position: absolute;
+  bottom: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-content > p {
+  color: #f1f1f1;
+  font-size: 25px;
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
