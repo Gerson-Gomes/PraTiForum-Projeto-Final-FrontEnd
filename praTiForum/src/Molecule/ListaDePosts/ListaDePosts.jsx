@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../Atom/button/Button";
+import Like from "../../Atom/icons/like.png";
+import Messenge from "../../Atom/icons/messenger.png";
+import View from "../../Atom/icons/eye.png"
+
 
 function ListaDePosts() {
   const [posts, setPosts] = useState([]);
@@ -85,7 +89,12 @@ function ListaDePosts() {
 
   return (
     <div style={styles.container}>
-      <h1>Lista de Posts</h1>
+      <h1 style={styles.mainContentTitle}>Todas as Discussões</h1>
+      <h1 style={styles.totalNumberPosts}>Total de visualizações (placeholder)</h1>
+      <div style={styles.postButtonContainer}>
+        <Button text="Nova Publicação" className="postButton" />
+      </div>
+
       {erro && <p style={styles.erro}>{erro}</p>}
 
       {carregando ? (
@@ -95,63 +104,89 @@ function ListaDePosts() {
           <ul style={styles.lista}>
             {posts.map((post) => (
               <li key={post.id} style={styles.item}>
-                <h2>{post.title}</h2>
-                <p>{post.body}</p>
-                {respostas[post.id] && (
-                  <div style={styles.respostas}>
-                    <h3>Respostas:</h3>
-                    <ul>
-                      {respostas[post.id].map((resposta, index) => (
-                        <li key={index} style={styles.respostaItem}>
-                          {editando.postId === post.id && editando.index === index ? (
-                            <div style={styles.formulario}>
-                              <textarea
-                                value={respostaTexto}
-                                onChange={(e) => setRespostaTexto(e.target.value)}
-                                style={styles.textarea}
-                              />
-                              <div style={styles.botoes}>
-                                <Button text="Salvar" onClick={handleSalvarEdicao} style={styles.enviarButton} />
-                                <Button text="Cancelar" onClick={() => setEditando({})} style={styles.cancelarButton} />
-                              </div>
-                            </div>
-                          ) : (
-                            <>
-                              <p>{resposta}</p>
-                              <div style={styles.acoes}>
-                                <Button
-                                  text="Editar"
-                                  onClick={() => handleEditarResposta(post.id, index, resposta)}
-                                  style={styles.editarButton}
-                                />
-                                <Button
-                                  text="Excluir"
-                                  onClick={() => handleExcluirResposta(post.id, index)}
-                                  style={styles.excluirButton}
-                                />
-                              </div>
-                            </>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
+                <div style={styles.postInfo}>
+                  <div style={styles.iconContainer}>
+                    <img src={Like} style={styles.icon}/>
+                    <p>Like</p>
+                    
                   </div>
-                )}
-                <Button text="Responder" onClick={() => handleResponder(post.id)} style={styles.responderButton} />
-                {respostaId === post.id && (
-                  <div style={styles.formulario}>
-                    <textarea
-                      value={respostaTexto}
-                      onChange={(e) => setRespostaTexto(e.target.value)}
-                      placeholder="Digite sua resposta aqui..."
-                      style={styles.textarea}
-                    />
-                    <div style={styles.botoes}>
-                      <Button text="Enviar" onClick={handleEnviarResposta} style={styles.enviarButton} />
-                      <Button text="Cancelar" onClick={handleCancelarResposta} style={styles.cancelarButton} />
+                  <div style={styles.iconContainer}>
+                    <img src={Messenge} style={styles.icon}/>
+                    <p>Coments</p>
+                    
+                  </div>
+                  <div style={styles.iconContainer}>
+                    <img src={View} style={styles.icon}/>
+                    <p>Views</p>
+                    
+                  </div>
+
+                  
+                  
+
+                </div>
+                <div>
+                  <h2 style={styles.postTitulo}>{post.title}</h2>
+                  <p style={styles.postConteudo}>{post.body}</p>
+                  <p></p>
+                  {respostas[post.id] && (
+                    <div style={styles.respostas}>
+                      <h3>Respostas:</h3>
+                      <ul>
+                        {respostas[post.id].map((resposta, index) => (
+                          <li key={index} style={styles.respostaItem}>
+                            {editando.postId === post.id && editando.index === index ? (
+                              <div style={styles.formulario}>
+                                <textarea
+                                  value={respostaTexto}
+                                  onChange={(e) => setRespostaTexto(e.target.value)}
+                                  style={styles.textarea}
+                                />
+                                <div style={styles.botoes}>
+                                  <Button text="Salvar" onClick={handleSalvarEdicao} style={styles.enviarButton} />
+                                  <Button text="Cancelar" onClick={() => setEditando({})} style={styles.cancelarButton} />
+                                </div>
+                              </div>
+                            ) : (
+                              <>
+                                <p>{resposta}</p>
+                                <div style={styles.acoes}>
+                                  <Button
+                                    text="Editar"
+                                    onClick={() => handleEditarResposta(post.id, index, resposta)}
+                                    style={styles.editarButton}
+                                  />
+                                  <Button
+                                    text="Excluir"
+                                    onClick={() => handleExcluirResposta(post.id, index)}
+                                    style={styles.excluirButton}
+                                  />
+                                </div>
+                              </>
+                            )}
+
+                          </li>
+
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                )}
+                  )}
+                  <Button text="Responder" onClick={() => handleResponder(post.id)} style={styles.responderButton} />
+                  {respostaId === post.id && (
+                    <div style={styles.formulario}>
+                      <textarea
+                        value={respostaTexto}
+                        onChange={(e) => setRespostaTexto(e.target.value)}
+                        placeholder="Digite sua resposta aqui..."
+                        style={styles.textarea}
+                      />
+                      <div style={styles.botoes}>
+                        <Button text="Enviar" onClick={handleEnviarResposta} style={styles.enviarButton} />
+                        <Button text="Cancelar" onClick={handleCancelarResposta} style={styles.cancelarButton} />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </li>
             ))}
           </ul>
@@ -168,21 +203,65 @@ const styles = {
     padding: "20px",
     width: "50%",
     margin: "0 auto",
-    backgroundColor: "#f7f7f7",
     borderRadius: "8px",
     position: "relative",
+  },
+  postButtonContainer: {
+    display: "flex"
+  },
+  postTitulo: {
+    color: "rgba(0, 58, 119, 1)",
+    fontSize: "14px",
+    fontFamily: "Poppins",
+    fontWeight: "500",
+    textAlign: "justify"
+  },
+  postConteudo: {
+    fontSize: "13px",
+    fontFamily: "Poppins",
+    fontWeight: "300",
+    textAlign: "justify"
+  },
+
+  mainContentTitle: {
+    textAlign: "left",
+    fontSize: "1.25em",
+  },
+  totalNumberPosts: {
+    fontSize: "1em",
+    textAlign: "left",
   },
   erro: {
     color: "red",
   },
   item: {
     backgroundColor: "#fff",
-    padding: "15px",
+    padding: "15px 0px",
     marginBottom: "10px",
     borderRadius: "5px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
     listStyleType: "none",
+    display: 'flex',
   },
+  postInfo: {
+    height: '100%',
+    minWidth: '10%',
+    maxWidth: '60px',
+    textAlign: "justify",
+    paddingRight:'20px',
+  },
+  iconContainer:{
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"space-evenly",
+  },
+  icon:{
+    height:'20px',
+  },
+  lista: {
+    backgroundColor: 'rgb(255,255,255)',
+    padding: "0px"
+  },
+
   respostas: {
     marginTop: "15px",
     textAlign: "left",
@@ -264,5 +343,7 @@ const styles = {
     gap: "10px",
   },
 };
+
+<script src="https://kit.fontawesome.com/69173ff800.js" crossorigin="anonymous"></script>
 
 export default ListaDePosts;
