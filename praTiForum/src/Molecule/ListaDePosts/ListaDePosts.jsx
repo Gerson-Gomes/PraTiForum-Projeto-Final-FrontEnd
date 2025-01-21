@@ -108,27 +108,27 @@ function ListaDePosts() {
                   <div style={styles.iconContainer}>
                     <img src={Like} style={styles.icon}/>
                     <p>Like</p>
-                    
                   </div>
                   <div style={styles.iconContainer}>
                     <img src={Messenge} style={styles.icon}/>
                     <p>Coments</p>
-                    
                   </div>
                   <div style={styles.iconContainer}>
                     <img src={View} style={styles.icon}/>
                     <p>Views</p>
-                    
                   </div>
-
-                  
-                  
-
                 </div>
                 <div>
                   <h2 style={styles.postTitulo}>{post.title}</h2>
                   <p style={styles.postConteudo}>{post.body}</p>
-                  <p></p>
+                  <div style={styles.postComplement} >
+                    <div style={styles.postTypeContainer} >
+                      <p style={styles.postType}>Backend</p>
+                    </div>
+                    <div>
+                      Perfil
+                    </div>
+                  </div>
                   {respostas[post.id] && (
                     <div style={styles.respostas}>
                       <h3>Respostas:</h3>
@@ -220,7 +220,9 @@ const styles = {
     fontSize: "13px",
     fontFamily: "Poppins",
     fontWeight: "300",
-    textAlign: "justify"
+    textAlign: "justify",
+    height:"90px",
+    
   },
 
   mainContentTitle: {
@@ -256,6 +258,22 @@ const styles = {
   },
   icon:{
     height:'20px',
+  },
+  postComplement:{
+    display:"flex",
+    justifyContent:"space-between",
+  },
+  postTypeContainer:{
+    width:"115px",
+    backgroundColor:"rgba(253, 139, 104, 1)",
+    height:"36px",
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  postType:{
+    color:"#ffffff",
+    fontFamily:"Poppins"
   },
   lista: {
     backgroundColor: 'rgb(255,255,255)',
