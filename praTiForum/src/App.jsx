@@ -21,6 +21,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Cadastro from "./pages/SignPage/SignPage";
 import Logado from "./pages/Logado/Logado";
 
+
 function App() {
   return (
     <Router>

@@ -13,6 +13,7 @@ button.primary-button {
   animation: animate-outline 1s ease-out infinite;
 }
 
+
 @keyframes animate-outline {
   from {
     box-shadow: 0 0 0 0 #007bff;
@@ -21,6 +22,21 @@ button.primary-button {
     box-shadow: 0 0 0 10px rgba(79, 156, 249, 0);
   }
 }
+
+button.postButton{
+  background-color: #007bff;
+  color: #ffffff;
+  position: relative;
+  left: 0%;
+  height: 3.25em;
+  padding: 0em 5em;
+}
+
+button.postButton:hover{
+  background-color: #0056b3;
+}
+
+
 
 button.tertiary-button{
   background-color: #fd8b68;
@@ -40,4 +56,8 @@ button.secondary-button {
 button.secondary-button:hover {
   background-color: #0056b3;
   color:white;
+}
+
+.postButton{
+  background-color: red;
 }
