@@ -10,7 +10,7 @@ function HeaderLogado() {
     <nav className="headerLogado">
       <Logo className="headerLogo" />
       <div >
-        <InputSearch label="" tipo="text" placeholder="Pesquisar..." className="" />
+        <InputSearch label="" tipo="text" placeholder="Pesquisar" className="" />
       </div>
       <div className="header-perfil">
         <ProfilePicture src={profile} alt="Logo" size={50}/>            

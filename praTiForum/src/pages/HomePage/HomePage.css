@@ -1,0 +1,9 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Garante que ocupem toda a altura da viewport */
+}
+
+.page-container {
+  min-height: 100vh; /* Garante que a página ocupe toda a altura da tela */
+}

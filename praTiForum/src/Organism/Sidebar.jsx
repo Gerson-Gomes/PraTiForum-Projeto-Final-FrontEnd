@@ -32,12 +32,14 @@ const Sidebar = () => {
             Discussões
           </a>
         </li>
+        {/* 
         <li className={activeItem === "tags" ? "active" : ""} onClick={() => handleItemClick("tags")}>
           <a href="#tags">
             <img src="./src/Atom/icons/icon-tags.png" alt="Tags" className="icon" />
             Tags
           </a>
         </li>
+        */}
 
         <li className="dropdown" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <a href="#sobre">
@@ -67,12 +69,14 @@ const Sidebar = () => {
           )}
         </li>
 
+        {/* 
         <li className={activeItem === "profile" ? "active" : ""} onClick={() => handleItemClick("profile")}>
           <a href="#profile">
             <img src="./src/Atom/icons/icon-profile.png" alt="Perfil" className="icon" />
             Perfil
           </a>
         </li>
+        */}
 
         <li className={activeItem === "saved" ? "active" : ""} onClick={() => handleItemClick("saved")}>
           <a href="#saved">

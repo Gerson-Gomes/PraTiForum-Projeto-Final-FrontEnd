@@ -8,7 +8,7 @@ function HeaderMain() {
     <nav className="header">
       <Logo />
       <div className="">
-        <InputSearch label="" tipo="text" placeholder="Pesquisar..." className="" />
+        <InputSearch label="" tipo="text" placeholder="Pesquisar" className="" />
       </div>
       <div className="header-buttons">
         <ButtonGroupHeader />
