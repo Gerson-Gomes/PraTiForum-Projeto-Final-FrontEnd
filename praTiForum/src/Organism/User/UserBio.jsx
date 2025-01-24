@@ -3,14 +3,14 @@ import Text from "../../Atom/paragraph/Text";
 import SocialMedias from "../../Molecule/SocialMedias/SocialMedias";
 import SaveButton from "../../Atom/button/SaveButton";
 
-const UserBio = ({ bio, socialLinks }) => (
+const UserBio = ({ bio, socialLinks, isEditing, setBio }) => (
   <div className="user-bio">
-    <Text id="user-bio-text">{bio}</Text>
-    <textarea id="user-bio-input" style={{ display: "none" }}></textarea>
+    {isEditing ? (
+      <textarea id="user-bio-input" value={bio} onChange={(e) => setBio(e.target.value)} />
+    ) : (
+      <Text id="user-bio-text">{bio}</Text>
+    )}
     <SocialMedias links={socialLinks} />
-    <SaveButton id="save-profile" style={{ display: "none" }}>
-      Salvar
-    </SaveButton>
   </div>
 );
 

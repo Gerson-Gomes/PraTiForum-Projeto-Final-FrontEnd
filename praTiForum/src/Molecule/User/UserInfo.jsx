@@ -1,17 +1,55 @@
 import React from "react";
-import Icon from "../../Atom/icons/Icon"
+import Icon from "../../Atom/icons/Icon";
 import Text from "../../Atom/paragraph/Text";
 
-const UserInfo = ({ name, memberSince, location }) => (
+const UserInfo = ({ 
+  name, 
+  memberSince, 
+  location, 
+  isEditing, 
+  setName, 
+  setLocation,
+  nameError,
+  locationError
+}) => (
   <div className="user-info">
-    <h3 id="user-name">{name}</h3>
+    {isEditing ? (
+      <>
+        <input
+          type="text"
+          id="user-name-input"
+          placeholder="Seu nome"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        {nameError && <span className="error-message">O nome é obrigatório!</span>}
+      </>
+    ) : (
+      <h3 id="user-name">{name}</h3>
+    )}
+
     <div className="user-data">
       <Icon className="fa fa-user" style={{ color: "#3d3d3d" }} />
       <Text>Membro desde {memberSince}</Text>
     </div>
+
     <div className="user-data">
       <Icon className="fa fa-map-marker" style={{ color: "#3d3d3d" }} />
-      <Text id="user-location">{location}</Text>
+      {isEditing ? (
+        <>
+          <input
+            type="text"
+            id="user-location-input"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+          {locationError && <span className="error-message">A localização é obrigatória!</span>}
+        </>
+      ) : (
+        <Text id="user-location">{location}</Text>
+      )}
     </div>
   </div>
 );
+
+export default UserInfo;
