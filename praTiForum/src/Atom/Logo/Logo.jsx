@@ -1,4 +1,4 @@
-import logo from "../../assets/Images/logo.png";
+import logo from "../../../src/assets/images/logo-maisprati-forum.svg";
 import "./logo.css";
 
 function Logo() {
@@ -10,8 +10,3 @@ function Logo() {
 }
 
 export default Logo;
-
-
-
-
-

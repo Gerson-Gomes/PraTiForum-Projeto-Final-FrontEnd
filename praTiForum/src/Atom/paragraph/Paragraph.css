@@ -1,7 +1,9 @@
 /* Paragraph.css */
 .paragraph {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1.125rem;
+    text-align: justify;
     color: #383838;
     line-height: 150%;
+    margin-top: 10px;
   }
