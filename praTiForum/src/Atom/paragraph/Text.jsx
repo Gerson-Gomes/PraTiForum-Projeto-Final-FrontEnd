@@ -6,4 +6,6 @@ const Text = ({ children, id, className }) => (
   </p>
 );
 
-export default Text;
+
+export default Text; 
+
