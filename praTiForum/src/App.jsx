@@ -20,6 +20,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Cadastro from "./pages/SignPage/SignPage";
 import Logado from "./pages/Logado/Logado";
+import Profile from "./pages/Profile/Profile"; // gabi
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} /> {/* Página de Login */}
         <Route path="/cadastro" element={<Cadastro />} /> {/* Página de Cadastro */}
         <Route path="/logado" element={<Logado />} /> {/* Página logado */}
-        
+        <Route path="/perfil-usuario" element={<Profile />} /> {/* Página de usuário */} 
       </Routes>
     </Router>
   );
