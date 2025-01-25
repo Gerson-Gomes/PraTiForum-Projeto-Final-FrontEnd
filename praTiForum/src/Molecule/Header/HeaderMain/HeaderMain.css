@@ -1,8 +1,138 @@
+/* HeaderMain.css */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header .logo {
+  width: 100px; /* Ajuste o tamanho do logo conforme necessário */
+}
+
+.header .header-buttons {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 7px;
+}
+
+.mobile-menu {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background-color: #ffffff;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 9px;
+}
+
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu li {
+  cursor: pointer;
+  list-style-type: none;
+  padding: 10px 20px;
+}
+
+.mobile-menu li:hover {
+  background-color: rgba(0, 123, 255, 0.1);;
+  border-radius: 9px;
+}
+
+.mobile-menu ul ul{
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-menu a {
+  text-decoration: none;
   color: black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
+@media (max-width: 1280px) {
+  .container-input {
+    display: none;
+  }
+}
+/* Ajustes para tablets */
+@media (max-width: 1024px) {
+  .header {
+    padding: 10px;
+  }
+
+  .header .logo {
+    width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .header .logo {
+    width: 60px;
+  }
+
+  .header .header-buttons {
+    margin-top: 10px;
+  }
+
+  .container-input {
+    display: none;
+  }
+}
+
+/* Exibe o menu apenas em telas menores que 800px */
+@media (max-width: 799px) {
+  .menu-title {
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+    padding-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .header-buttons.buttons {
+    display: block;
+  }
+}
+
+/* Esconde o menu em telas maiores ou iguais a 800px */
+@media (min-width: 800px) {
+  .menu-title {
+    display: none;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .header-buttons.buttons {
+    display: none;
+  }
+}
