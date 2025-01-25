@@ -21,6 +21,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Cadastro from "./pages/SignPage/SignPage";
 import Logado from "./pages/Logado/Logado";
 import Profile from "./pages/Profile/Profile"; // gabi
+import About from "./pages/About/About";
+
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} /> {/* Página inicial */}
+        <Route path="/team" element={<About />} /> {/* Página Sobre */}
         <Route path="/login" element={<LoginPage />} /> {/* Página de Login */}
         <Route path="/cadastro" element={<Cadastro />} /> {/* Página de Cadastro */}
         <Route path="/logado" element={<Logado />} /> {/* Página logado */}
