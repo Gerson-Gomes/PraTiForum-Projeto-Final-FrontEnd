@@ -22,6 +22,7 @@ import Cadastro from "./pages/SignPage/SignPage";
 import Logado from "./pages/Logado/Logado";
 import Profile from "./pages/Profile/Profile"; // gabi
 import About from "./pages/About/About";
+import Institutional from "./pages/Institutional/Institutional";
 
 
 
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} /> {/* Página inicial */}
         <Route path="/team" element={<About />} /> {/* Página Sobre */}
+        <Route path="/institutional" element={<Institutional />} /> {/* Página sobre a Instituição */}
         <Route path="/login" element={<LoginPage />} /> {/* Página de Login */}
         <Route path="/cadastro" element={<Cadastro />} /> {/* Página de Cadastro */}
         <Route path="/logado" element={<Logado />} /> {/* Página logado */}

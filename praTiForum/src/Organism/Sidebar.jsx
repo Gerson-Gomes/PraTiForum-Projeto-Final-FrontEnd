@@ -62,7 +62,7 @@ const Sidebar = () => {
                   className={activeItem === "institutional" ? "active" : ""}
                   onClick={() => handleItemClick("institutional")}
                 >
-                  <a href="#institucional">
+                  <a href="/institutional">
                     <img src="./src/Atom/icons/icon-institution.png" alt="Instituição" className="icon" />
                     Institucional
                   </a>
