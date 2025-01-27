@@ -1,49 +1,21 @@
-// import "./Input.css";
-
-// function Input({ label, tipo, placeholder, value, setValor }) {
-//   return (
-//     <div input-default>
-//       {label && <label htmlFor={tipo}>{label}</label>}
-//         <input className="input-default"
-//           type={tipo}          
-//           placeholder={placeholder}
-//           required
-//           id={tipo}
-//           value={value}
-//           onChange={(evento) => setValor(evento.target.value)}
-//         />
-//       </div>
-//   );
-// }
-
-// export default Input;
-
-
 import "./input.css";
 
-// const Input = (props) => {
-//   const placeholderModificado = `${props.placeholder}...`;
-
-//   return (
-//     <div className="input-default">
-//       <label>{props.label}</label>
-//       <input placeholder={placeholderModificado} />
-//     </div>
-//   );
-// };
-
-// export default Input;
-
-const Input = (props) => {
-  const placeholderModificado = `${props.placeholder}...`;
+const Input = ({ label, type = "text", name, placeholder, value, onChange, error }) => {
+  const placeholderModificado = `${placeholder}...`;
 
   return (
     <div className="input-default">
-      <label>{props.label}</label>
+      <label htmlFor={name}>{label}</label>
       <input
-        type={props.type || "text"} // Garantir que o tipo padrão seja "text"
+        id={name}
+        name={name}
+        type={type}
         placeholder={placeholderModificado}
+        value={value}
+        onChange={onChange}
+        className={`input-field ${error ? "input-error" : ""}`} // Classe condicional para erros
       />
+      {error && <span className="error-message">{error}</span>} {/* Exibe mensagem de erro */}
     </div>
   );
 };

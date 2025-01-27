@@ -13,6 +13,16 @@ button.primary-button {
   animation: animate-outline 1s ease-out infinite;
 }
 
+button.login-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  width: 347px;
+  height: 45px;
+  transition: background-color 0.3s ease;
+}
 
 @keyframes animate-outline {
   from {
