@@ -221,7 +221,9 @@ const styles = {
     fontFamily: "Poppins",
     fontWeight: "300",
     textAlign: "justify",
-    height:"90px",
+    height:"max-content",
+    padding: "10px 0px",
+    minHeight:'90px'
     
   },
 
@@ -245,11 +247,13 @@ const styles = {
     display: 'flex',
   },
   postInfo: {
-    height: '100%',
-    minWidth: '10%',
-    maxWidth: '60px',
+    height: '11vh',
     textAlign: "justify",
-    paddingRight:'20px',
+    paddingRight:'5px',
+    width:'max-content',
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-between'
   },
   iconContainer:{
     display:"flex",
