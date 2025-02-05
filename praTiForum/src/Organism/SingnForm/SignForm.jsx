@@ -7,6 +7,7 @@ import GoogleButton from "../../Atom/button/GoogleButton";
 import Logo from "../../Atom/Logo/Logo";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignForm.css";
+import { GoogleLogin } from "@react-oauth/google";
 
 const SignForm = () => {
   const [formData, setFormData] = useState({
@@ -65,7 +66,11 @@ const SignForm = () => {
         </div>
 
         <div className="social-login">
-          <GoogleButton text="Entrar com Google" className="google-button" />
+          <GoogleLogin 
+            onSuccess={(credentialResponse) =>{
+              console.log(credentialResponse)
+            }}
+            onError={()=>console.log("Deu ruim")}  />
         </div>
 
         <p className="divider">

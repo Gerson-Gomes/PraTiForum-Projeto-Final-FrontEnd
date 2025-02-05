@@ -4,6 +4,7 @@ import imagem from "../../assets/Images/imagem.png";
 import { BiArrowBack } from "react-icons/bi"; // Importando a seta
 import "./LoginPage.css";
 
+
 const Login = () => {
   return (
     <div className="login-container">
