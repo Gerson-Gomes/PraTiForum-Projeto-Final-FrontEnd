@@ -62,16 +62,11 @@
 
 .icon {
   display: inline-block;
-  margin-top: 1px;
   color: #fff;
-  border-radius: 30px;
-  transition: background-color 0.3s;
   padding: 4px 8px;
+  margin-left: 5px;
 }
 
-.icon:hover {
-  background-color: #005682;
-}
 
 .carousel-button {
   position: absolute;
@@ -89,16 +84,21 @@
 .carousel-button.prev {
   left: 10px;
   color: #005682;
+  z-index: 999;
 }
 
 .carousel-button.next {
   right: 5px;
   color: #005682;
+  z-index: 999;
 }
 
 .carousel-button:hover {
   background-color: rgba(180, 174, 174, 0.8);
 }
+
+
+
 
 @media (max-width: 1600px) {
   .membro-equipe {
