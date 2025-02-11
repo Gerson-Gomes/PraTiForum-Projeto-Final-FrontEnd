@@ -6,10 +6,12 @@ import Logo from "../../Atom/Logo/Logo";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignForm.css";
 import { GoogleLogin } from "@react-oauth/google";
+import axios from "../../services/userService";
 
 const USER_REGEX = /^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,7}$/
 const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const REGISTER_URL = '/usuarios'
 
 const SignForm = () => {
   const userRef = useRef();
@@ -106,10 +108,26 @@ const SignForm = () => {
 
     if (!v1 || !v2) {
       setErrMsg("Entrada Invalida");
-      return; 
+      return;
     }
-    console.log(user,pwd);
-    setSuccess(true)
+    try {
+      const response = await axios.post(REGISTER_URL,
+        JSON.stringify({ user: nomeCompleto, pwd: senha, email }),
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true
+        }
+      );
+      console.log(response.data);
+      console.log(JSON.stringify(response));
+      setSuccess(true)
+    } catch (err) {
+      if(!err?.response){
+        setErrMsg('Sem resposta do servidor');
+      } else {
+        setErrMsg('Registration Failed')
+      }
+    }
   };
 
 
