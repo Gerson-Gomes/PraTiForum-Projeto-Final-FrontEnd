@@ -92,8 +92,12 @@
 .form-buttons {
   width: 100%;
   margin-bottom: 10px;
-  text-align: center;
+  text-align: left;
+  margin-right: -19px;
   /* Centraliza os botões */
+}
+.form-buttons:disabled{
+  background-color: #3D3D3D;
 }
 
 .primary-button {
@@ -106,7 +110,8 @@
   transition: background-color 0.3s;
 }
 
-#signInInput {
+#signInInput,
+#confirm_pwd {
   font-size: 14px;
   padding: 10px;
   box-sizing: border-box;
@@ -193,6 +198,7 @@
 .show-password-button:hover {
   text-decoration: underline;
 }
-label{
+
+label {
   margin-left: 9px;
 }

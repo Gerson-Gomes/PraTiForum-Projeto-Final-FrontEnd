@@ -1,15 +1,14 @@
 import React, { useRef, useState, useEffect, forwardRef } from "react";
 import { useNavigate } from "react-router-dom";
 import userService from "../../services/userService";
-import Input from "../../Atom/input/Input";
 import Button from "../../Atom/button/Button";
 import Logo from "../../Atom/Logo/Logo";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignForm.css";
 import { GoogleLogin } from "@react-oauth/google";
 
-const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const USER_REGEX = /^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,7}$/
+const PWD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const SignForm = () => {
@@ -34,6 +33,9 @@ const SignForm = () => {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 
 
@@ -71,10 +73,9 @@ const SignForm = () => {
   //   confirmaSenha: "",
   // });
 
-  // const [errorMessage, setErrorMessage] = useState("");
-  // const [loading, setLoading] = useState(false);
-  // const [showPassword, setShowPassword] = useState(false);
-  // const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   // const navigate = useNavigate();
 
   // const handleChange = (e) => {
@@ -97,19 +98,18 @@ const SignForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    const v1 = USER_REGEX.test(user)
+    const v2 = PWD_REGEX.test(pwd)
+    console.log(v1);
+    console.log(v2);
 
-    setLoading(true);
-    try {
-      await userService.createUser(formData);
-      alert("Cadastro realizado com sucesso!");
-      navigate("/login");
-    } catch (error) {
-      console.error("Erro ao cadastrar usuário:", error);
-      setErrorMessage("Erro ao cadastrar usuário. Tente novamente.");
-    } finally {
-      setLoading(false);
+
+    if (!v1 || !v2) {
+      setErrMsg("Entrada Invalida");
+      return; 
     }
+    console.log(user,pwd);
+    setSuccess(true)
   };
 
 
@@ -117,120 +117,138 @@ const SignForm = () => {
 
 
   return (
-    <section className="formularioLogin">
-      <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"} aria-live="assertive">
-        {errMsg}
-      </p>
-      <form className="form-content">
-        <div className="logo-container">
-          <Logo />
-        </div>
-
-        <div className="social-login">
-          <GoogleLogin
-            onSuccess={(credentialResponse) => {
-              console.log(credentialResponse)
-            }}
-            onError={() => console.log("Deu ruim")} />
-        </div>
-
-        <p className="divider">
-          <span className="line"></span> ou <span className="line"></span>
-        </p>
-
-        <div className="form-fields">
-          <label htmlFor="userName" >Nome Completo</label>
-          <input
-            id="signInInput"
-            type="text"
-            name="nome"
-            autoComplete="off"
-            ref={userRef}
-            placeholder="Digite seu Nome"
-            value={user}
-            required
-            aria-invalid={validName ? "false" : "true"}
-            aria-describedby="uidnote"
-            onChange={(e) => setUser(e.target.value)}
-            onFocus={() => setUserFocus(true)}
-            onBlur={() => setUserFocus(false)}
-          />
-          <p id="uidnote" className={userFocus && user && !validName ? "requisitosUsuario" : "offscreen"}>
-            Use de 4 a 24 caracteres <br />
-            O primeiro digido deve ser uma letra <br />
-            São permitidas: Letras, numeros, sobrelinha e hifens
+    <>
+      {success ? (
+        <section>
+          <h1>Success</h1>
+          <p>
+            <a href="#"></a>
           </p>
-          <label htmlFor="email">Email</label>
-          <input
-            id="signInInput"
-            type="email"
-            name="email"
-            placeholder="Digite seu Email"
-            autoComplete="off"
-            ref={userRef}
-            value={email}
-            required
-            aria-invalid={validEmail ? "false" : "true"}
-            aria-describedby="uidnote"
-            onChange={(e) => setEmail(e.target.value)}
-            onFocus={() => setEmailFocus(true)}
-            onBlur={() => setEmailFocus(false)}
-          />
-
-          <p id="uidnote" className={emailFocus && email && !validEmail ? "requisitosUsuario" : "offscreen"}>
-            Insira um email valido
+        </section>
+      ) : (
+        <section className="formularioLogin">
+          <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"} aria-live="assertive">
+            {errMsg}
           </p>
+          <form className="form-content" onSubmit={handleSubmit}>
+            <div className="logo-container">
+              <Logo />
+            </div>
+
+            <div className="social-login">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  console.log(credentialResponse)
+                }}
+                onError={() => console.log("Deu ruim")} />
+            </div>
+
+            <p className="divider">
+              <span className="line"></span> ou <span className="line"></span>
+            </p>
+
+            <div className="form-fields">
+              <label htmlFor="userName" >Nome Completo</label>
+              <input
+                id="signInInput"
+                type="text"
+                name="nome"
+                autoComplete="off"
+                ref={userRef}
+                placeholder="Digite seu Nome"
+                value={user}
+                required
+                aria-invalid={validName ? "false" : "true"}
+                aria-describedby="uidnote"
+                onChange={(e) => setUser(e.target.value)}
+                onFocus={() => setUserFocus(true)}
+                onBlur={() => setUserFocus(false)}
+              />
+              <p id="uidnote" className={userFocus && user && !validName ? "requisitosUsuario" : "offscreen"}>
+                Use de 4 a 24 caracteres <br />
+                O primeiro digido deve ser uma letra <br />
+                São permitidas: Letras, numeros, sobrelinha e hifens
+              </p>
+              <label htmlFor="email">Email</label>
+              <input
+                id="signInInput"
+                type="email"
+                name="email"
+                placeholder="Digite seu Email"
+                autoComplete="off"
+                ref={userRef}
+                value={email}
+                required
+                aria-invalid={validEmail ? "false" : "true"}
+                aria-describedby="uidnote"
+                onChange={(e) => setEmail(e.target.value)}
+                onFocus={() => setEmailFocus(true)}
+                onBlur={() => setEmailFocus(false)}
+              />
+
+              <p id="uidnote" className={emailFocus && email && !validEmail ? "requisitosUsuario" : "offscreen"}>
+                Insira um email valido
+              </p>
 
 
-          <div className="password-field">
-            <label htmlFor="password">Senha</label>
-            <input
-              id="signInInput"
-              type="password"
-              name="password"
-              placeholder="Digite sua senha"
-              autoComplete="off"
-              ref={userRef}
-              value={pwd}
+              <div className="password-field">
+                <label htmlFor="password">Senha</label>
+                <input
+                  id="signInInput"
+                  type="password"
+                  onChange={(e) => setPwd(e.target.value)}
+                  required
+                  aria-invalid={validPwd ? "false" : "true"}
+                  aria-describedby="pwdnote"
+                  onFocus={() => setPwdFocus(true)}
+                  onBlur={() => setPwdFocus(false)}
+                />
+                <p pwdnote className={pwdFocus && !validPwd ? "requisitosUsuario" : "offscreen"}>A senha deve ter um minimo de 8 caracteres, uma letra e um numero</p>
+
+              </div>
+
+              <div className="password-field">
+                <label htmlFor="confirm_pwd">Confirmar Senha</label>
+                <input
+                  id="confirm_pwd"
+                  type="password"
+                  onChange={(e) => setMatchPwd(e.target.value)}
+                  required
+                  aria-invalid={validMatch ? "false" : "true"}
+                  aria-describedby="confirmnote"
+                  onFocus={() => setMatchFocus(true)}
+                  onBlur={() => setMatchFocus(false)}
+                />
+                <p id="confirmnote" className={matchFocus && !validMatch ? "requisitosUsuario" : "offscreen"}>
+                  As senhas devem ser identicas
+                </p>
+
+              </div>
+            </div>
+
+            <div className="form-buttons">
+              <Button
+                text={loading ? "Carregando..." : "Cadastrar"}
+                className="login-button"
+                type="submit"
+                id="loginSubmit"
+                disabled={!validName || !validPwd || !validEmail || !validMatch ? true : false}
+
+              />
+            </div>
 
 
 
-            />
-            <button type="button" className="show-password-button" >
-
-            </button>
-          </div>
-
-          <div className="password-field">
-            <Input
-
-
-            />
-            <button
-              type="button"
-              className="show-password-button"
-            >
-
-            </button>
-          </div>
-        </div>
-
-        <div className="form-buttons">
-          <Button
-
-          />
-        </div>
-
-
-
-        <p className="signup-prompt">
-          Já possui uma conta?{" "}
-          <a href="/login" className="signup-prompt-link">
-            Entrar
-          </a>
-        </p>
-      </form>
-    </section>
+            <p className="signup-prompt">
+              Já possui uma conta?{" "}
+              <a href="/login" className="signup-prompt-link">
+                Entrar
+              </a>
+            </p>
+          </form>
+        </section>
+      )}
+    </>
   );
 };
 
