@@ -56,11 +56,11 @@ const LoginForm = () => {
         </div>
 
         <div className="social-login">
-          <GoogleLogin 
-          onSuccess={(credentialResponse) =>{
-            console.log(credentialResponse)
-          }}
-          onError={()=>console.log("Deu ruim")}  />
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              console.log(credentialResponse)
+            }}
+            onError={() => console.log("Deu ruim")} />
         </div>
 
         <p className="divider">
