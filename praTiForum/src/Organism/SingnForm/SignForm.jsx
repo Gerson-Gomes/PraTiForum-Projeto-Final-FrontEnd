@@ -8,6 +8,7 @@ import Logo from "../../Atom/Logo/Logo";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignForm.css";
 import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 const SignForm = () => {
   const [formData, setFormData] = useState({
@@ -69,6 +70,7 @@ const SignForm = () => {
           <GoogleLogin 
             onSuccess={(credentialResponse) =>{
               console.log(credentialResponse)
+              console.log(jwtDecode(credentialResponse.credential))
             }}
             onError={()=>console.log("Deu ruim")}  />
         </div>
