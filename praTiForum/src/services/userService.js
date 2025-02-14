@@ -1,11 +1,23 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000", // URL base do backend
+  baseURL: "http://localhost:8080/api/auth", // URL base do backend
 });
 
 // Serviço de usuários
 const userService = {
+  // POST: Realiza o login
+  login: async (credentials) => {
+    console.log("Enviando dados para login:", credentials);
+    try {
+      const response = await api.post("/login", credentials);
+      return response.data;
+    } catch (error) {
+      console.error("Erro na requisição:", error.response ? error.response.data : error);
+      throw error;
+    }
+  },
+
   // GET: Busca todos os usuários
   getAllUsers: async () => {
     const response = await api.get("/usuarios");
@@ -14,7 +26,7 @@ const userService = {
 
   // POST: Cadastra um novo usuário
   createUser: async (userData) => {
-    const response = await api.post("/usuarios", userData);
+    const response = await api.post("/register", userData);
     return response.data;
   },
 
