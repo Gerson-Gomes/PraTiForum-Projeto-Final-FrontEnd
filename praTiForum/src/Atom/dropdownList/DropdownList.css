@@ -1,0 +1,28 @@
+.dropdown label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.dropdown select {
+  background-color: #fff;
+  width: 100%;  
+  font-size: 18px;
+  padding: 14px;
+  box-sizing: border-box;
+  height: auto;
+  border-radius: 10px;
+  width: 300px;
+}
+  
+  /*.input-default input {
+    background-color: #fff;  
+    width: 100%;  
+    font-size: 18px;
+    padding: 24px;
+    box-sizing: border-box;
+    height: 0px;
+    border-radius: 10px;
+    width: 300px;
+  } */
+  

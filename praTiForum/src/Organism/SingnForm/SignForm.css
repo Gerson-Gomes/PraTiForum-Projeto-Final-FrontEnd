@@ -1,0 +1,135 @@
+/* Contêiner principal */
+.formularioSign {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  margin: 0;
+  height: 100vh; /* Garante que ocupe toda a altura da tela */
+  background-color: #f7f7f7; /* Fundo suave */
+  padding: 0; /* Remove o padding para ocupar a tela inteira */
+}
+
+/* Estilo do formulário */
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os itens dentro do formulário */
+  width: 100%;
+  max-height: 100%; /* Faz o formulário ocupar toda a altura do contêiner principal */
+  max-width: 600px; /* Limita a largura máxima do formulário */
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 10px 100px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Centraliza o conteúdo dentro do formulário */
+}
+
+/* Estilo do logo */
+.logo-container {
+  margin-bottom: 1px; /* Espaço abaixo do logo */
+  text-align: center; /* Centraliza o logo */  
+}
+
+/* Botão de login com Google */
+.social-login {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center; /* Centraliza o botão de login */
+  margin-bottom: 20px;
+}
+
+/* Linha divisora */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0px;
+  color: #a9a9a9; /* Cor do texto "ou" */
+  font-size: 16px;
+}
+
+.divider .line {
+  flex: 1;
+  height: 1px;
+  background-color: #d6d6d6;
+  margin: 0 10px;
+}
+
+/* Campos do formulário */
+.form-fields {
+  width: 100%;
+  margin-bottom: 10px; /* Ajuste de margem inferior */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espaço entre os inputs */
+}
+
+.form-fields label {
+  margin-bottom: 5px; /* Diminuir a margem inferior do label */
+  font-size: 14px; /* Ajuste o tamanho da fonte se necessário */
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* Botões */
+.form-buttons {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center; /* Centraliza os botões */
+}
+
+.primary-button {
+  width: 100%; /* Botão ocupa toda a largura */
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Mensagem de erro */
+.error-message {
+  color: red;
+  font-size: 11px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Texto de cadastro */
+.signup-prompt {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.signup-prompt-link {
+  color: #fd8b68; /* Cor do link */
+  font-size: 14px; /* Ajuste do tamanho da fonte */
+  text-decoration: none; /* Remove o sublinhado padrão */
+}
+
+.signup-prompt-link:hover {
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+.password-field {
+  position: relative;
+}
+
+.show-password-button {
+  position: absolute;
+  top: 65%;
+  right: 2px; /* Alinha o botão à direita do campo de senha */
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  background: none;
+  border: none;
+  color: #3D3D3D;
+  cursor: pointer;
+  font-size: 18px; /* Ajusta o tamanho do ícone */
+}
+
+.show-password-button:hover {
+  text-decoration: underline;
+}

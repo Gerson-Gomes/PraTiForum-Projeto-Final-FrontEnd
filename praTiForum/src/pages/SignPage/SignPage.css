@@ -1,0 +1,72 @@
+/* Remove margens e padding padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/* Contêiner principal */
+.login-container {
+  display: flex;
+  width: 100vw; /* Usa 100% da largura da viewport */
+  height: 100vh; /* Usa 100% da altura da viewport */
+  margin: 0;
+  padding: 0;
+}
+
+/* Contêiner da imagem */
+.image-container-login {
+  flex: 6; /* 60% da largura */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Preenche toda a largura */
+  height: 100%; /* Preenche toda a altura */
+  overflow: hidden; /* Remove qualquer excesso */
+  }
+
+/* Estilo da imagem */
+.login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra o contêiner sem distorção */
+  display: block; /* Remove espaçamentos causados por imagens inline */
+}
+
+/* Sobreposição */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #003a77; /* Tom azul */
+  mix-blend-mode: multiply; /* Combina a sobreposição com a imagem */
+  opacity: 0.6; /* Ajuste a opacidade conforme necessário */
+  pointer-events: none; /* Permite interação com a imagem original */
+}
+
+.back-to-home {
+  position: absolute;
+  top: 20px; /* Distância do topo da imagem */
+  left: 20px; /* Distância da esquerda da imagem */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+  color: #fff; /* Cor do texto */
+  padding: 10px 15px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  text-decoration: none; /* Remove sublinhado */
+  font-size: 16px; /* Tamanho da fonte */
+  z-index: 10; /* Garante que o link fique sobre a imagem */
+}
+
+.back-to-home:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Escurece ao passar o mouse */
+}
