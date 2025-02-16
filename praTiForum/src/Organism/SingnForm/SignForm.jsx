@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import userService from "../../services/userService";
 import Input from "../../Atom/input/Input";
 import Button from "../../Atom/button/Button";
-import GoogleButton from "../../Atom/button/GoogleButton";
 import Logo from "../../Atom/Logo/Logo";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignForm.css";
@@ -52,6 +51,8 @@ const SignForm = () => {
       alert("Cadastro realizado com sucesso!");
       navigate("/login");
     } catch (error) {
+      console.log(formData);
+      
       console.error("Erro ao cadastrar usuário:", error);
       setErrorMessage("Erro ao cadastrar usuário. Tente novamente.");
     } finally {
@@ -69,8 +70,8 @@ const SignForm = () => {
         <div className="social-login">
           <GoogleLogin 
             onSuccess={(credentialResponse) =>{
-              console.log(credentialResponse)
-              console.log(jwtDecode(credentialResponse.credential))
+              const googleUser = jwtDecode(credentialResponse.credential)
+              userService.createUser(googleUser)
             }}
             onError={()=>console.log("Deu ruim")}  />
         </div>
