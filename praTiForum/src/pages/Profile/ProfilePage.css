@@ -61,10 +61,31 @@ p {
   justify-content: space-between;
 }
 
+.editPictureHover{
+  display: none;
+  position: absolute;
+  top: 26.4%;
+  width: 111px;
+  background-color: black;
+  
+}
+.editPictureHover > p {
+  text-align: center;
+  color: white;
+}
+
+.picture-container:hover + .editPictureHover{
+  display: block;
+}
+
 .user-data {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+.picture-container{
+  width: 111px;
+  height: 111px;
 }
 
 .edit-profile {
@@ -77,6 +98,12 @@ p {
   width: 80px;
   height: 80px;
 }
+#profile-picture{
+  height: 111px;
+  width: 111px;
+}
+
+
 
 .profile-picture img {
   width: 100%;
@@ -169,10 +196,13 @@ p {
 
 .page-container {
   display: flex;
-  flex-direction: column; /* Layout em coluna */
-  min-height: 100vh; /* Garante que a página ocupe toda a altura da tela */
+  flex-direction: column;
+  /* Layout em coluna */
+  min-height: 100vh;
+  /* Garante que a página ocupe toda a altura da tela */
 }
 
 main {
-  flex: 1; /* Faz o conteúdo principal ocupar o espaço restante */
+  flex: 1;
+  /* Faz o conteúdo principal ocupar o espaço restante */
 }

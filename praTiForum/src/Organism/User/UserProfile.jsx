@@ -6,13 +6,20 @@ import Icon from "../../Atom/icons/Icon";
 const UserProfile = ({ user, isEditing, handleEditProfile, setName, setLocation }) => (
   <div className="user-profile-container">
     <div className="user-picture-info">
-      <Avatar src={user.picture} alt="Foto de perfil" />
-      <input
+      <div >
+        <div className="picture-container" > 
+          <Avatar src={user.picture} alt="Foto de perfil" />
+        </div>
+        <div className="editPictureHover">
+          <p>Editar foto</p>
+        </div>
+      </div>
+      {/* <input
         type="file"
         id="upload-picture"
         accept="image/*"
         style={{ display: "none" }}
-      />
+      /> */}
       <UserInfo
         name={user.name}
         memberSince={user.memberSince}

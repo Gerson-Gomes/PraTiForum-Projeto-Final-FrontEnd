@@ -71,6 +71,7 @@ const SignForm = () => {
           <GoogleLogin 
             onSuccess={(credentialResponse) =>{
               const googleUser = jwtDecode(credentialResponse.credential)
+              console.log(googleUser);
               userService.createUser(googleUser)
             }}
             onError={()=>console.log("Deu ruim")}  />
