@@ -16,7 +16,7 @@ const UserProfile = ({ user, isEditing, handleEditProfile, setName, setLocation 
       if (modal) {
         modal.style.opacity = "1";
       }
-    }, 300);
+    }, 150);
 
   }
   return (
