@@ -19,7 +19,7 @@ p {
   background-color: #fafafa;
   border-radius: 15px;
   padding: 27px 50px 43px 50px;
-  margin: 50px 300px 100px 300px;
+  margin: auto;
   display: flex;
   flex-direction: column;
 }
@@ -120,6 +120,38 @@ p {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ddd;
+}
+
+.modal-photo-upload {
+  z-index: 1000;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 40%;
+  margin-inline: auto;
+  transform: translate(-50%, 0);
+  transition: 0.5s;
+  opacity: 0;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-photo-upload>button {
+  width: max-content;
 }
 
 #user-name-input,
