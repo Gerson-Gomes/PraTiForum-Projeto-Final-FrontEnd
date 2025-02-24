@@ -5,7 +5,7 @@ import Footer from "../../Molecule/footer/footer";
 import UserBio from "../../Organism/User/UserBio";
 import UserProfile from "../../Organism/User/UserProfile";
 import SocialMedias from "../../Molecule/SocialMedias/SocialMedias";
-import UserImage from "../../Atom/image/user-image.png";
+import UserImage from "../../assets/images/defaultUser.png";
 import SaveButton from "../../Atom/button/SaveButton";
 
 import "./ProfilePage.css";
