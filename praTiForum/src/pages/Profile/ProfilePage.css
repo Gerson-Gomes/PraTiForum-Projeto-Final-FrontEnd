@@ -168,7 +168,9 @@ p {
   z-index: 1500;
 }
 .upload-button:hover{
-  cursor: pointer ;
+  cursor: pointer;
+  transition: 0.5s ease-in;
+  background-color: #007de3;
 }
 
 #user-name-input,

@@ -42,10 +42,10 @@ export default function ModalContent({ onClose }) {
       try {
         const croppedImg = await getCroppedImg(image, cropArea)
 
-        
+        setCroppedImage(croppedImg);
 
         console.log('Foto refatorada', croppedImg)
-        setCroppedImage(croppedImg);
+        
         alert("Imagem eviada com sucesso!")
       } catch (error) {
         console.error("Erro ao formatar a imagem");
