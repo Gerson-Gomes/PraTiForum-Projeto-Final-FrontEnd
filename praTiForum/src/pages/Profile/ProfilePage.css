@@ -164,6 +164,13 @@ p {
   width: max-content;
 }
 
+.upload-button{
+  z-index: 1500;
+}
+.upload-button:hover{
+  cursor: pointer ;
+}
+
 #user-name-input,
 #user-location-input {
   font-family: "Poppins", sans-serif;
