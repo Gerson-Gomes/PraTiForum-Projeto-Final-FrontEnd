@@ -3,17 +3,25 @@ import InputSearch from "../../../Atom/input/InputSearch";
 import Logo from "../../../Atom/Logo/Logo";
 import ButtonGroupHeader from "../../ButtonGroupHeader/ButtonGroupHeader";
 import "./HeaderMain.css";
+import menuIcon from "../../../Atom/icons/menu-dropdown-mobile-icon.png";
 
 function HeaderMain() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isHovered, setIsHovered] = useState(false); // Estado para controlar o hover
 
+  // Atualiza o estado isMobile conforme o tamanho da tela
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 800);
+      const isNowMobile = window.innerWidth < 768;
+      setIsMobile(isNowMobile);
+  
+      // Se a tela for maior que 800px, fechar o menu
+      if (!isNowMobile) {
+        setMenuOpen(false);
+      }
     };
-
+  
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => {
@@ -23,6 +31,15 @@ function HeaderMain() {
 
   return (
     <nav className="header">
+      {/* Ícone do menu hambúrguer (aparece apenas no mobile) */}
+      {isMobile && (
+        <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+          <img src= {menuIcon} alt="Menu" className="menu-icon-img"
+          />
+        </div>
+      )}
+
+      {/* Logo do site */}
       <Logo />
 
       {/* Input de pesquisa */}
@@ -30,17 +47,10 @@ function HeaderMain() {
         <InputSearch label="" tipo="text" placeholder="Pesquisar..." />
       </div>
 
-      {/* Botões, visíveis apenas em telas grandes */}
+      {/* Botões do cabeçalho (visíveis apenas no desktop) */}
       {!isMobile && (
         <div className="header-buttons">
           <ButtonGroupHeader />
-        </div>
-      )}
-
-      {/* Menu hambúrguer em telas menores */}
-      {isMobile && (
-        <div className="menu-title" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? "✕" : "☰"} {/* Alterna entre ☰ e ✕ */}
         </div>
       )}
 
