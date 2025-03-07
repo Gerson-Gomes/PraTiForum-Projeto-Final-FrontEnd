@@ -9,3 +9,9 @@
   .heading span {
     color: #fd8b68;
   }  
+
+  @media (min-width:320px) and (max-width: 767px){
+    .heading{
+      font-size: 1.8rem;
+    }
+  }

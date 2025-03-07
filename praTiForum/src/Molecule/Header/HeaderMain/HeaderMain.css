@@ -65,28 +65,25 @@
 
 .mobile-menu a {
   text-decoration: none;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #3D3D3D;
+  font-family: "Poppins Light", serif;
+  font-weight: 700;
 }
 
 
-@media (max-width: 1280px) {
+@media (min-width: 1024px) {
   .container-input {
     display: none;
   }
 }
 
 
-/* Exibe o menu apenas em telas menores que 768px (mobile) */
+/* telas menores que 768px (mobile) */
 @media (min-width:320px) and (max-width: 767px) {
-  /* .menu-title {
-    font-size: 20px;
-    font-weight: bold;
-    display: block;
-    cursor: pointer;
-    padding-right: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-  } */
+
+  .container-input {
+    display: none;
+  }
 
   .menu-icon {
     position: absolute;
@@ -125,34 +122,28 @@
     padding: 10px;
   }
 
-  .mobile-menu li a{
-    font-family: 'Poppins Light', serif;
-    font-weight: 700;
-    color: #3D3D3D;
-  }
-
 }
 
-/* Esconde o menu em telas maiores ou iguais a 768px e com max de 1023px - TABLETS */
+/* css telas menores e tablets */
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  /* .menu-title {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container-input {
     display: none;
-  } */
+  }
+
+ .header-logo{
+    margin-right: 950px;
+ }
+
+  .siderbar{
+    display: none;
+  }
 
   .mobile-menu {
     position: absolute;
     top: 100%; 
     left: 0; 
-    width: 350px; 
-    height: 100vh;
+    height: 100%;
   }
 
-  .hamburger {
-    display: none;
-  }
-
-  .header-buttons.buttons {
-    display: none;
-  }
 }
