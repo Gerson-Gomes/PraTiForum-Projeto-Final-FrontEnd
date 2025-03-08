@@ -24,10 +24,10 @@ function App() {
 
           {/* Rota protegida com userId dinâmico */}
           <Route
-            path="/perfil-usuario/:userId"
+            path="/"
             element={
               <RotaProtegida>
-                <Profile />
+                <HomePage />
               </RotaProtegida>
             }
           />

@@ -44,7 +44,7 @@ const LoginForm = () => {
           console.log("Falha ao salvar o token");
         }
         setIsLogged(true)
-        navigate("/perfil-usuario/${userId}");
+        navigate("/");
       } else {
         setErrorMessage("Email ou senha inválidos.");
       }
