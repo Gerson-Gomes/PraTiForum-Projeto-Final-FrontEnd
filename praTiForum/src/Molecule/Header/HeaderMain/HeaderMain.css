@@ -1,4 +1,9 @@
 /* HeaderMain.css */
+@font-face {
+  font-family: 'Poppins Light';
+  src: url(../../../assets/Fonts/Poppins/Poppins-Light.ttf);
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -60,57 +65,41 @@
 
 .mobile-menu a {
   text-decoration: none;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #3D3D3D;
+  font-family: "Poppins Light", serif;
+  font-weight: 700;
 }
 
 
-@media (max-width: 1280px) {
-  .container-input {
-    display: none;
-  }
-}
-/* Ajustes para tablets */
-@media (max-width: 1024px) {
-  .header {
-    padding: 10px;
-  }
-
-  .header .logo {
-    width: 80px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-  }
-
-  .header .logo {
-    width: 60px;
-  }
-
-  .header .header-buttons {
-    margin-top: 10px;
-  }
-
+@media (min-width: 1024px) {
   .container-input {
     display: none;
   }
 }
 
-/* Exibe o menu apenas em telas menores que 800px */
-@media (max-width: 799px) {
-  .menu-title {
-    font-size: 20px;
-    font-weight: bold;
-    display: block;
+
+/* telas menores que 768px (mobile) */
+@media (min-width:320px) and (max-width: 767px) {
+
+  .container-input {
+    display: none;
+  }
+
+  .menu-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
     cursor: pointer;
-    padding-right: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .menu-icon img {
+    margin: 25% 0 25% 30%;
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-logo{
+    margin-left: 70px;
   }
 
   .hamburger {
@@ -120,19 +109,41 @@
   .header-buttons.buttons {
     display: block;
   }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%; 
+    left: 0; 
+    background: white;
+    width: 350px; 
+    height: 100vh;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+  }
+
 }
 
-/* Esconde o menu em telas maiores ou iguais a 800px */
-@media (min-width: 800px) {
-  .menu-title {
+/* css telas menores e tablets */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container-input {
     display: none;
   }
 
-  .hamburger {
+ .header-logo{
+    margin-right: 950px;
+ }
+
+  .siderbar{
     display: none;
   }
 
-  .header-buttons.buttons {
-    display: none;
+  .mobile-menu {
+    position: absolute;
+    top: 100%; 
+    left: 0; 
+    height: 100%;
   }
+
 }

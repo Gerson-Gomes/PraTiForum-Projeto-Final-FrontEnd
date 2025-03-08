@@ -108,19 +108,8 @@
 }
 
 
-@media (max-width: 1024px) {
-  .hamburger-menu {
-    display: none; 
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .sidebar {
-    width: 250px;
-    transform: translateX(-100%); 
-  }
-
-  .sidebar.open {
-    transform: translateX(0); 
+    display: none;
   }
 }

@@ -7,3 +7,9 @@
     line-height: 150%;
     margin-top: 10px;
   }
+
+  @media (min-width:320px) and (max-width: 767px){
+    .paragraph{
+      font-size: 1rem;
+    }
+  }
