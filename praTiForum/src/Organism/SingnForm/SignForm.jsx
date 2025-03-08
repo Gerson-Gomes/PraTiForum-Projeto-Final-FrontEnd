@@ -7,14 +7,13 @@ import Logo from "../../Atom/Logo/Logo";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignForm.css";
 import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
 
 const SignForm = () => {
   const [formData, setFormData] = useState({
-    nome: "",
+    fullName: "",
     email: "",
-    senha: "",
-    confirmaSenha: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -29,11 +28,11 @@ const SignForm = () => {
   };
 
   const validateForm = () => {
-    if (!formData.nome || !formData.email || !formData.senha || !formData.confirmaSenha) {
+    if (!formData.fullName || !formData.email || !formData.password || !formData.confirmPassword) {
       setErrorMessage("Preencha todos os campos.");
       return false;
     }
-    if (formData.senha !== formData.confirmaSenha) {
+    if (formData.password !== formData.confirmPassword) {
       setErrorMessage("As senhas não são iguais.");
       return false;
     }
@@ -67,7 +66,9 @@ const SignForm = () => {
           <Logo />
         </div>
 
+
         <div className="social-login">
+
           <GoogleLogin 
             onSuccess={(credentialResponse) =>{
               const googleUser = jwtDecode(credentialResponse.credential)
@@ -77,6 +78,7 @@ const SignForm = () => {
             onError={()=>console.log("Deu ruim")}  />
         </div>
 
+
         <p className="divider">
           <span className="line"></span> ou <span className="line"></span>
         </p>
@@ -85,9 +87,9 @@ const SignForm = () => {
           <Input
             label="Nome Completo"
             type="text"
-            name="nome"
+            name="fullName"
             placeholder="Digite seu Nome"
-            value={formData.nome}
+            value={formData.fullName}
             onChange={handleChange}
           />
           <Input
@@ -102,9 +104,9 @@ const SignForm = () => {
             <Input
               label="Senha"
               type={showPassword ? "text" : "password"}
-              name="senha"
+              name="password"
               placeholder="Digite sua senha"
-              value={formData.senha}
+              value={formData.password}
               onChange={handleChange}
             />
             <button type="button" className="show-password-button" onClick={() => setShowPassword(!showPassword)}>
@@ -116,9 +118,9 @@ const SignForm = () => {
             <Input
               label="Confirme sua Senha"
               type={showConfirmPassword ? "text" : "password"}
-              name="confirmaSenha"
+              name="confirmPassword"
               placeholder="Digite novamente a senha"
-              value={formData.confirmaSenha}
+              value={formData.confirmPassword}
               onChange={handleChange}
             />
             <button
