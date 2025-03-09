@@ -13,7 +13,7 @@ function HomePage() {
   return (
     <>
       <div className="page-container">
-        {true ? <HeaderLogado/>: <Header/>}
+        {isLogged ? <HeaderLogado/>: <Header/>}
         <Sidebar />
         <MainContent />
         <Footer />
