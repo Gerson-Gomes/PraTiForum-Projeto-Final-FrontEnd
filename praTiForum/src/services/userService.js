@@ -46,11 +46,22 @@ const userService = {
     return response.data;
   },
 
-  // PATCH: Atualiza um usuário existente
+  // PUT: Atualiza um usuário existente
   updateUser: async (userId, updatedData) => {
-    const response = await api.patch(`/usuarios/${userId}`, updatedData);
-    return response.data;
+    try {
+      const token = localStorage.getItem("token");
+      const response = await api.put(`/users/${userId}`, updatedData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao atualizar usuário:", error.response ? error.response.data : error);
+      throw error;
+    }
   },
+
 
   // DELETE: Remove um usuário
   deleteUser: async (userId) => {

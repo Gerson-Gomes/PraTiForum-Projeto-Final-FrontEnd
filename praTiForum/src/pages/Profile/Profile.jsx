@@ -18,6 +18,10 @@ const Profile = () => {
   const [nameError, setNameError] = useState("");
   const [locationError, setLocationError] = useState("");
 
+  // Estados para os campos editáveis
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
+
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -26,11 +30,8 @@ const Profile = () => {
           console.error("Token não encontrado");
           return;
         }
-        // Decodifica o token para extrair o userId
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.userId;
-
-        // Busca os dados do usuário com base no userId extraído do token
         const data = await userService.getUser(userId);
         setUserData(data);
       } catch (error) {
@@ -40,12 +41,20 @@ const Profile = () => {
     fetchUser();
   }, []);
 
+  // Atualiza os estados dos campos editáveis quando os dados do usuário são carregados
+  useEffect(() => {
+    if (userData) {
+      setName(userData.firstName);
+      setLocation(userData.location || "");
+    }
+  }, [userData]);
+
   if (!userData) return <div>Carregando...</div>;
 
-  // Monta o objeto do usuário com base nos dados retornados pela API
+  // Objeto para exibição no componente UserProfile
   const user = {
     picture: userData.profilePicture,
-    name: userData.firstName, // Você pode concatenar o lastName se desejar
+    name: userData.firstName,
     memberSince: userData.creationDate,
     location: userData.location || "",
   };
@@ -55,24 +64,46 @@ const Profile = () => {
     setSaveVisible(true);
   };
 
-  const handleSaveProfile = () => {
+  const handleSaveProfile = async () => {
     // Validações simples
-    if (!user.name.trim()) {
+    if (!name.trim()) {
       setNameError("O nome é obrigatório.");
     } else {
       setNameError("");
     }
 
-    if (!user.location.trim()) {
+    if (!location.trim()) {
       setLocationError("A localização é obrigatória.");
     } else {
       setLocationError("");
     }
 
-    if (user.name.trim() && user.location.trim()) {
-      setIsEditing(false);
-      setSaveVisible(false);
-      // Aqui, você pode implementar a chamada à API para atualizar o usuário (PUT ou PATCH)
+    if (name.trim() && location.trim()) {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("Token não encontrado");
+          return;
+        }
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.userId;
+
+        // Mescla os dados atuais com os campos atualizados.
+        const updatedData = {
+          ...userData, // Inclui todos os atributos atuais do usuário
+          firstName: name, // Atualiza o nome
+          location: location, // Atualiza a localização (caso faça parte do modelo)
+        };
+
+        // Chama o endpoint de atualização com os dados completos
+        const updatedUser = await userService.updateUser(userId, updatedData);
+        // Atualiza o estado com os dados retornados pela API
+        setUserData(updatedUser);
+        setIsEditing(false);
+        setSaveVisible(false);
+      } catch (error) {
+        console.error("Erro ao atualizar perfil:", error);
+      }
     }
   };
 
@@ -87,9 +118,28 @@ const Profile = () => {
               handleEditProfile={handleEditProfile}
           />
 
-          {isEditing && nameError && <span className="error">{nameError}</span>}
-          {isEditing && locationError && (
-              <span className="error">{locationError}</span>
+          {isEditing && (
+              <div className="edit-fields">
+                <label>
+                  Nome:
+                  <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                  />
+                </label>
+                {nameError && <span className="error">{nameError}</span>}
+
+                <label>
+                  Localização:
+                  <input
+                      type="text"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                  />
+                </label>
+                {locationError && <span className="error">{locationError}</span>}
+              </div>
           )}
 
           <UserBio
@@ -101,16 +151,20 @@ const Profile = () => {
           <SocialMedias
               links={[
                 {
-                  href: userData.socialMedia[0]?.gitProfile || "",
+                  href: userData.socialMedia?.gitProfile || "",
                   className: "fa fa-github",
                 },
                 {
-                  href: userData.socialMedia[0]?.linkedinProfile || "",
+                  href: userData.socialMedia?.linkedinProfile || "",
                   className: "fa fa-linkedin-square",
                 },
                 {
-                  href: userData.socialMedia[0]?.instagramProfile || "",
+                  href: userData.socialMedia?.instagramProfile || "",
                   className: "fa fa-instagram",
+                },
+                {
+                  href: userData.socialMedia?.discordProfile || "",
+                  className: "fa fa-discord",
                 },
               ]}
               isEditing={isEditing}
