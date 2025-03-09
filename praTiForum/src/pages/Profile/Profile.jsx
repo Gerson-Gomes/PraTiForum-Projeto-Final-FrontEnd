@@ -1,52 +1,53 @@
 import React, { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 import Logo from "../../Atom/Logo/Logo";
 import Sidebar from "../../Organism/Sidebar";
 import Footer from "../../Molecule/footer/footer";
 import UserBio from "../../Organism/User/UserBio";
 import UserProfile from "../../Organism/User/UserProfile";
 import SocialMedias from "../../Molecule/SocialMedias/SocialMedias";
-import UserImage from "../../assets/images/defaultUser.png";
 import SaveButton from "../../Atom/button/SaveButton";
+import userService from "../../services/userService";
 
 import "./ProfilePage.css";
 
 const Profile = () => {
+  const [userData, setUserData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [saveVisible, setSaveVisible] = useState(false);
-
-  const [name, setName] = useState(() => {
-    const savedName = localStorage.getItem("name");
-    return savedName ? savedName : ""; // valor padrão caso não haja no localStorage
-  });
-
-  const [location, setLocation] = useState(() => {
-    const savedLocation = localStorage.getItem("location");
-    return savedLocation ? savedLocation : ""; // valor padrão caso não haja no localStorage
-  });
-
-  const [bio, setBio] = useState(
-    "Estudante de desenvolvimento front-end com foco em criar interfaces modernas e responsivas. Atualmente, estou aprofundando meus conhecimentos em HTML, CSS, JavaScript e React. Nos meus momentos livres, gosto de ler e jogar videogames. 👾💗"
-  );
-
-  const [socialLinks, setSocialLinks] = useState(() => {
-    const savedLinks = localStorage.getItem("socialLinks");
-    return savedLinks
-      ? JSON.parse(savedLinks)
-      : [
-          { href: "", className: "fa fa-github" },
-          { href: "", className: "fa fa-linkedin-square" },
-          { href: "", className: "fa fa-instagram" },
-        ];
-  });
-
   const [nameError, setNameError] = useState("");
   const [locationError, setLocationError] = useState("");
 
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("Token não encontrado");
+          return;
+        }
+        // Decodifica o token para extrair o userId
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.userId;
+
+        // Busca os dados do usuário com base no userId extraído do token
+        const data = await userService.getUser(userId);
+        setUserData(data);
+      } catch (error) {
+        console.error("Erro ao carregar os dados do usuário:", error);
+      }
+    }
+    fetchUser();
+  }, []);
+
+  if (!userData) return <div>Carregando...</div>;
+
+  // Monta o objeto do usuário com base nos dados retornados pela API
   const user = {
-    picture: UserImage,
-    name,
-    memberSince: "03/2024",
-    location,
+    picture: userData.profilePicture,
+    name: userData.firstName, // Você pode concatenar o lastName se desejar
+    memberSince: userData.creationDate,
+    location: userData.location || "",
   };
 
   const handleEditProfile = () => {
@@ -55,84 +56,75 @@ const Profile = () => {
   };
 
   const handleSaveProfile = () => {
-    // Verificar se nome e localização foram preenchidos
-    if (!name.trim()) {
+    // Validações simples
+    if (!user.name.trim()) {
       setNameError("O nome é obrigatório.");
     } else {
       setNameError("");
     }
 
-    if (!location.trim()) {
+    if (!user.location.trim()) {
       setLocationError("A localização é obrigatória.");
     } else {
       setLocationError("");
     }
 
-    // Se não houver erros, salva o perfil
-    if (name.trim() && location.trim()) {
+    if (user.name.trim() && user.location.trim()) {
       setIsEditing(false);
       setSaveVisible(false);
-
-      // Salvar nome e localização no localStorage quando o perfil for salvo
-      localStorage.setItem("name", name);
-      localStorage.setItem("location", location);
-
-      // Salvar os links no localStorage quando o perfil for salvo
-      localStorage.setItem("socialLinks", JSON.stringify(socialLinks));
+      // Aqui, você pode implementar a chamada à API para atualizar o usuário (PUT ou PATCH)
     }
   };
 
-  useEffect(() => {
-    if (name) localStorage.setItem("name", name);
-  }, [name]);
-
-  useEffect(() => {
-    if (location) localStorage.setItem("location", location);
-  }, [location]);
-
-  useEffect(() => {
-    if (socialLinks.length > 0) {
-      localStorage.setItem("socialLinks", JSON.stringify(socialLinks));
-    }
-  }, [socialLinks]);
-
   return (
-    <>
       <div className="page-container">
         <Logo />
         <Sidebar />
-          <main className="user-profile">
-            <UserProfile
+        <main className="user-profile">
+          <UserProfile
               user={user}
               isEditing={isEditing}
               handleEditProfile={handleEditProfile}
-              setName={setName}
-              setLocation={setLocation}
-            />
+          />
 
-            {isEditing && nameError && (
-              <span className="error">{nameError}</span>
-            )}
-
-            {isEditing && locationError && (
+          {isEditing && nameError && <span className="error">{nameError}</span>}
+          {isEditing && locationError && (
               <span className="error">{locationError}</span>
-            )}
+          )}
 
-            <UserBio bio={bio} isEditing={isEditing} setBio={setBio} />
-            <SocialMedias
-              links={socialLinks}
+          <UserBio
+              bio={userData.description}
               isEditing={isEditing}
-              setLinks={setSocialLinks}
-            />
-            {saveVisible && (
+              // Implemente a edição da bio se desejar
+          />
+
+          <SocialMedias
+              links={[
+                {
+                  href: userData.socialMedia[0]?.gitProfile || "",
+                  className: "fa fa-github",
+                },
+                {
+                  href: userData.socialMedia[0]?.linkedinProfile || "",
+                  className: "fa fa-linkedin-square",
+                },
+                {
+                  href: userData.socialMedia[0]?.instagramProfile || "",
+                  className: "fa fa-instagram",
+                },
+              ]}
+              isEditing={isEditing}
+              // Implemente a edição dos links se desejar
+          />
+
+          {saveVisible && (
               <SaveButton id="save-profile" onClick={handleSaveProfile}>
                 Salvar
               </SaveButton>
-            )}
-          </main>
-          <Footer />
+          )}
+        </main>
+        <Footer />
       </div>
-    </>
   );
 };
 

@@ -11,30 +11,32 @@ import RotaProtegida from "./Atom/rotaprotegida/RotaProtegida"; // Componente de
 import { AuthProvider } from "./AuthContext";
 
 function App() {
-  return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/team" element={<About />} />
-          <Route path="/institutional" element={<Institutional />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/logado" element={<Logado />} />
+    return (
+        <AuthProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/team" element={<About />} />
+                    <Route path="/institutional" element={<Institutional />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/cadastro" element={<Cadastro />} />
+                    <Route path="/logado" element={<Logado />} />
+                    {/* Adiciona a rota para o perfil do usuário */}
+                    <Route path="/perfil-usuario" element={<Profile />} />
 
-          {/* Rota protegida com userId dinâmico */}
-          <Route
-            path="/"
-            element={
-              <RotaProtegida>
-                <HomePage />
-              </RotaProtegida>
-            }
-          />
-        </Routes>
-      </Router>
-    </AuthProvider>
-  );
+                    {/* Exemplo de rota protegida */}
+                    <Route
+                        path="/"
+                        element={
+                            <RotaProtegida>
+                                <HomePage />
+                            </RotaProtegida>
+                        }
+                    />
+                </Routes>
+            </Router>
+        </AuthProvider>
+    );
 }
 
 export default App;
