@@ -1,6 +1,5 @@
 .headerLogado {
   display: flex;
-  
   align-items: center;
   justify-content: space-between;  
   padding: 10px 20px;
@@ -17,4 +16,8 @@
 .headerLogo {
   font-size: 20px;
   font-weight: bold;
+}
+
+@media (min-width:320px) and (max-width: 767px){
+ 
 }

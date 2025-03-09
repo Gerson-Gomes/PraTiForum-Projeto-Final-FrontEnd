@@ -18,6 +18,12 @@
     font-weight: bold;
   }
 
+  @media (min-width:320px) and (max-width: 767px){
+    .page-container{
+      max-width: 100%;
+    }
+  }
+
 
   
   
