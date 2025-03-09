@@ -71,3 +71,10 @@ button.secondary-button:hover {
 .postButton{
   background-color: red;
 }
+
+@media (min-width:320px) and (max-width: 767px){
+  button.login-button{
+    width: 300px;
+  }
+}
+

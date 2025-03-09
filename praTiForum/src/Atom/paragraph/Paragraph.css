@@ -11,5 +11,7 @@
   @media (min-width:320px) and (max-width: 767px){
     .paragraph{
       font-size: 1rem;
+      text-align: center;
+      margin-top: 10%;
     }
   }

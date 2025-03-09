@@ -154,3 +154,40 @@
 .show-password-button:hover {
   text-decoration: underline;
 }
+
+@media (min-width:320px) and (max-width: 767px){
+
+  .image-container-login{
+    display: none;
+  }
+
+  .overlay{
+    display: none;
+  }
+
+  .login-container {
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw; 
+    overflow: hidden; 
+  }
+
+  .form-content{
+    max-width: 100vw
+  }
+
+  .logo-container{
+    margin-right: 40%;
+  }
+
+  .form-fields{
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
