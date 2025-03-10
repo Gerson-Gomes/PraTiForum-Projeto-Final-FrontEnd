@@ -21,13 +21,4 @@
     font-weight: bold;
     color: #ccc;
   }
-
-  @media (min-width:320px) and (max-width: 767px){
-
-    .profile-picture{
-      margin-right: 10%;
-    }
-
-    
-  }
   
