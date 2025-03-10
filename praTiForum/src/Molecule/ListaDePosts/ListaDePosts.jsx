@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../../Atom/button/Button";
 import Like from "../../Atom/icons/like.png";
 import Messenge from "../../Atom/icons/messenger.png";
-import View from "../../Atom/icons/eye.png";
-import "./ListaDePosts.css";
-
+import View from "../../Atom/icons/eye.png"
 
 function ListaDePosts() {
   const [posts, setPosts] = useState([]);
@@ -18,7 +16,6 @@ function ListaDePosts() {
   const [tituloPublicacao, setTituloPublicacao] = useState("");
   const [sucesso, setSucesso] = useState("");
   const [conteudoPublicacao, setConteudoPublicacao] = useState("");
-
 
 
   const refreshToken = async () => {
@@ -190,8 +187,8 @@ const fetchPosts = async () => {
   };
 
   const handleCancelarResposta = () => {
-    setRespostaId(null);
-    setRespostaTexto("");
+    setRespostaId(null); // Fecha o formulário sem enviar
+    setRespostaTexto(""); // Limpa o campo de texto
   };
 
   const handleExcluirResposta = (postId, index) => {
@@ -226,7 +223,6 @@ const fetchPosts = async () => {
   }, []);  
 
   return (
-
 
     <div style={styles.container}>
     {/* <h1 style={styles.mainContentTitle}>Todas as Discussões</h1> */}
@@ -272,25 +268,24 @@ const fetchPosts = async () => {
         <p>Carregando...</p>
       ) : (
         <div>
-          <ul className="lista">
+          <ul style={styles.lista}>
             {posts.map((post) => (
-              <li key={post.id} className="item">
-                <div className="post-info">
-                  <div className="icon-container">
-                    <img src={Like} className="icon" />
+              <li key={post.id} style={styles.item}>
+                <div style={styles.postInfo}>
+                  <div style={styles.iconContainer}>
+                    <img src={Like} style={styles.icon}/>
                     <p>Like</p>
                   </div>
-                  <div className="icon-container">
-                    <img src={Messenge} className="icon" />
+                  <div style={styles.iconContainer}>
+                    <img src={Messenge} style={styles.icon}/>
                     <p>Coments</p>
                   </div>
-                  <div className="icon-container">
-                    <img src={View} className="icon" />
+                  <div style={styles.iconContainer}>
+                    <img src={View} style={styles.icon}/>
                     <p>Views</p>
                   </div>
                 </div>
                 <div>
-
                   <h2 style={styles.postTitulo}>{post.title}</h2>
                   <p style={styles.postConteudo}>{post.content}</p>
                   <div style={styles.postComplement} >
@@ -301,66 +296,61 @@ const fetchPosts = async () => {
                       Perfil
                     </div> */}
                   </div>
-
                   {respostas[post.id] && (
-                    <div className="respostas">
+                    <div style={styles.respostas}>
                       <h3>Respostas:</h3>
                       <ul>
                         {respostas[post.id].map((resposta, index) => (
-                          <li key={index} className="resposta-item">
+                          <li key={index} style={styles.respostaItem}>
                             {editando.postId === post.id && editando.index === index ? (
-                              <div className="formulario">
+                              <div style={styles.formulario}>
                                 <textarea
                                   value={respostaTexto}
                                   onChange={(e) => setRespostaTexto(e.target.value)}
-                                  className="textarea"
+                                  style={styles.textarea}
                                 />
-
-                                <div className="botoes">
-                                  <Button text="Salvar" onClick={handleSalvarEdicao} className="enviar-button" />
-                                  <Button text="Cancelar" onClick={() => setEditando({})} className="cancelar-button" />
-
+                                <div style={styles.botoes}>
+                                  <Button text="Salvar" onClick={handleSalvarEdicao} className="enviarButton" />
+                                  <Button text="Cancelar" onClick={() => setEditando({})} className="cancelarButton"s />
                                 </div>
                               </div>
                             ) : (
                               <>
                                 <p>{resposta}</p>
-                                <div className="acoes">
+                                <div style={styles.acoes}>
                                   <Button
                                     text="Editar"
                                     onClick={() => handleEditarResposta(post.id, index, resposta)}
-                                    className="editar-button"
+                                    style={styles.editarButton}
                                   />
                                   <Button
                                     text="Excluir"
                                     onClick={() => handleExcluirResposta(post.id, index)}
-                                    className="excluir-button"
+                                    style={styles.excluirButton}
                                   />
                                 </div>
                               </>
                             )}
+
                           </li>
+
                         ))}
                       </ul>
                     </div>
                   )}
-
-
-                  <Button text="Responder" onClick={() => handleResponder(post.id)} className="responder-button" />
-
+                  
+                  <Button text="Responder" onClick={() => handleResponder(post.id)} className="responderButton" />
                   {respostaId === post.id && (
-                    <div className="formulario">
+                    <div style={styles.formulario}>
                       <textarea
                         value={respostaTexto}
                         onChange={(e) => setRespostaTexto(e.target.value)}
                         placeholder="Digite sua resposta aqui..."
-                        className="textarea"
+                        style={styles.textarea}
                       />
-
-                      <div className="botoes">
-                        <Button text="Enviar" onClick={handleEnviarResposta} className="enviar-button" />
-                        <Button text="Cancelar" onClick={handleCancelarResposta} className="cancelar-button" />
-
+                      <div style={styles.botoes}>
+                        <Button text="Enviar" onClick={handleEnviarResposta} className="enviarButton" />
+                        <Button text="Cancelar" onClick={handleCancelarResposta} className="cancelarButton" />
                       </div>
                     </div>
                   )}
@@ -368,13 +358,12 @@ const fetchPosts = async () => {
               </li>
             ))}
           </ul>
-          <Button text="Recarregar Posts" onClick={fetchPosts} className="button" />
+          <Button text="Recarregar Posts" onClick={fetchPosts} style={styles.button} />
         </div>
       )}
     </div>
   );
 }
-
 
 const styles = {
   container: {
@@ -564,6 +553,5 @@ const styles = {
 
 
 <script src="https://kit.fontawesome.com/69173ff800.js" crossorigin="anonymous"></script>
-
 
 export default ListaDePosts;
