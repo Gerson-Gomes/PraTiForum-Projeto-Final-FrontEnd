@@ -61,11 +61,10 @@ const Profile = () => {
 
   if (!userData) return <div>Carregando...</div>;
 
+  // Cria um objeto para dados que não serão alterados (exceto os estados de edição)
   const user = {
     picture: userData.profilePicture,
-    name: userData.firstName,
     memberSince: userData.creationDate,
-    location: userData.location || "",
   };
 
   const handleEditProfile = () => {

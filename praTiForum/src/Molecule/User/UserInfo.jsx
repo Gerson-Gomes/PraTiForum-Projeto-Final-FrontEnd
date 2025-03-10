@@ -10,7 +10,7 @@ const UserInfo = ({
                       setName,
                       setLocation,
                       nameError,
-                      locationError
+                      locationError,
                   }) => (
     <div className="user-info">
         {isEditing ? (
