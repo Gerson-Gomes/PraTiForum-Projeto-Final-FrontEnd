@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080/api/auth", // URL base do backend
+  baseURL: "http://localhost:8080/api", // URL base do backend
 });
 
 // Serviço de usuários
@@ -10,10 +10,26 @@ const userService = {
   login: async (credentials) => {
     console.log("Enviando dados para login:", credentials);
     try {
-      const response = await api.post("/login", credentials);
+      const response = await api.post("auth/login", credentials);
       return response.data;
     } catch (error) {
       console.error("Erro na requisição:", error.response ? error.response.data : error);
+      throw error;
+    }
+  },
+
+  // GET: Busca as informações do usuário pelo userId, enviando o token JWT para autenticação
+  getUser: async (userId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await api.get(`/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao buscar usuário:", error);
       throw error;
     }
   },
@@ -30,11 +46,22 @@ const userService = {
     return response.data;
   },
 
-  // PATCH: Atualiza um usuário existente
+  // PUT: Atualiza um usuário existente
   updateUser: async (userId, updatedData) => {
-    const response = await api.patch(`/usuarios/${userId}`, updatedData);
-    return response.data;
+    try {
+      const token = localStorage.getItem("token");
+      const response = await api.put(`/users/${userId}`, updatedData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao atualizar usuário:", error.response ? error.response.data : error);
+      throw error;
+    }
   },
+
 
   // DELETE: Remove um usuário
   deleteUser: async (userId) => {

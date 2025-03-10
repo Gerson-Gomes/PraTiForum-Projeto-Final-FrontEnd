@@ -10,7 +10,7 @@
 }
 
 .header-perfil {
-    margin-right: 50px;
+    margin-right: 140px;
 }
 
 .headerLogo {
@@ -19,5 +19,8 @@
 }
 
 @media (min-width:320px) and (max-width: 767px){
- 
 }
+#perfilButton{
+  background-color: white;
+}
+

@@ -8,30 +8,35 @@ import Profile from "./pages/Profile/Profile";
 import About from "./pages/About/About";
 import Institutional from "./pages/Institutional/Institutional";
 import RotaProtegida from "./Atom/rotaprotegida/RotaProtegida"; // Componente de rota protegida
+import { AuthProvider } from "./AuthContext";
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/team" element={<About />} />
-        <Route path="/institutional" element={<Institutional />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/logado" element={<Logado />} />
-        
-        {/* Rota protegida com userId dinâmico */}
-        <Route 
-          path="/perfil-usuario/:userId" 
-          element={
-            <RotaProtegida>
-              <Profile />
-            </RotaProtegida>
-          }
-        /> 
-      </Routes>
-    </Router>
-  );
+    return (
+        <AuthProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/team" element={<About />} />
+                    <Route path="/institutional" element={<Institutional />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/cadastro" element={<Cadastro />} />
+                    <Route path="/logado" element={<Logado />} />
+                    {/* Adiciona a rota para o perfil do usuário */}
+                    <Route path="/perfil-usuario" element={<Profile />} />
+
+                    {/* Exemplo de rota protegida */}
+                    <Route
+                        path="/"
+                        element={
+                            <RotaProtegida>
+                                <HomePage />
+                            </RotaProtegida>
+                        }
+                    />
+                </Routes>
+            </Router>
+        </AuthProvider>
+    );
 }
 
 export default App;
