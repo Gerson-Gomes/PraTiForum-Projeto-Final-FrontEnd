@@ -114,7 +114,11 @@ article {
   background-color: #005BB5;
 }
 
-@media (max-width: 768px) {
+@media (min-width:320px) and (max-width: 767px){
+  .main-container{
+    margin: 15% 0% 0% 10%;
+  }
+
   .conteudo-sobre {
     flex-direction: column;
   }
@@ -126,4 +130,9 @@ article {
   .imagem img {
     max-width: 100%;
   }
-}
+
+  .button-container button{
+    margin-left: -10%;
+  }
+} 
+  

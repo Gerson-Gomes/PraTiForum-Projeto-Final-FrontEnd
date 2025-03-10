@@ -9,3 +9,10 @@
     width: 100%;
     height: auto;
   }  
+
+  @media (min-width:320px) and (max-width: 767px){
+    .image-container img{
+      height: 250px;
+      width: 250px;
+    }
+  }

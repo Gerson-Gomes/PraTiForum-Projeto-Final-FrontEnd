@@ -19,3 +19,9 @@
   height: 53px; /* Defina a altura do input */
   box-shadow: none; /* Garantir que não haja sombra */
 }
+
+@media (min-width:320px) and (max-width: 767px){
+  .input-default input {
+    width: 300px;
+  }
+}

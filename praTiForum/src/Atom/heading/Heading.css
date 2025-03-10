@@ -12,6 +12,9 @@
 
   @media (min-width:320px) and (max-width: 767px){
     .heading{
+      margin-top: 10%;
       font-size: 1.8rem;
+      text-align: start;
+      text-size-adjust: 80%;
     }
   }

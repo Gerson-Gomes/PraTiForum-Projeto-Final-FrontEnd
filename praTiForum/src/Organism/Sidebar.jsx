@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
+import { useAuth } from "../AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado para controlar a visibilidade do Sidebar
+  const {isLogged} = useAuth()
+  const navigate = useNavigate()
 
   const handleMouseEnter = () => {
     setIsDropdownVisible(true);
@@ -28,7 +32,7 @@ const Sidebar = () => {
               Home
             </a>
           </li>
-          <li className={activeItem === "discussions" ? "active" : ""} onClick={() => handleItemClick("discussions")}>
+          <li className={activeItem === "discussions" ? "active" : ""} onClick={() => {isLogged ? navigate("/logado"):navigate("/login") }}>
             <a href="#discussions">
               <img src="./src/Atom/icons/icon-discussions.png" alt="Discussões" className="icon" />
               Discussões
