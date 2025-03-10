@@ -40,7 +40,49 @@ button.postButton{
   left: 0%;
   height: 3.25em;
   padding: 0em 5em;
+  margin-bottom: 30px;
 }
+
+button.responderButton{
+  padding: "10px 15px";
+  background-Color: #fd8b68;
+  color: #ffffff;
+  border: "none";
+}
+
+button.responderButton:hover{
+  background-color: #E07050;
+}
+
+button.enviarButton{
+  padding: "10px 15px";
+  background-Color: #007bff;
+  color: #ffffff;
+  border: "none";
+}
+
+button.enviarButton:hover{
+  background-color: #0056b3;
+}
+
+button.cancelarButton{
+  padding: "10px 15px";
+  background-Color: #4F6D7A;
+  color: #ffffff;
+  border: "none";
+}
+
+button.cancelarButton:hover{
+  background-color: #3E5A68;
+}
+
+
+
+
+
+
+
+
 
 button.postButton:hover{
   background-color: #0056b3;
