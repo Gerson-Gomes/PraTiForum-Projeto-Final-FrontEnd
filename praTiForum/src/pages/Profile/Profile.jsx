@@ -5,7 +5,6 @@ import Sidebar from "../../Organism/Sidebar";
 import Footer from "../../Molecule/footer/footer";
 import UserBio from "../../Organism/User/UserBio";
 import UserProfile from "../../Organism/User/UserProfile";
-import SocialMedias from "../../Molecule/SocialMedias/SocialMedias";
 import SaveButton from "../../Atom/button/SaveButton";
 import userService from "../../services/userService";
 
@@ -21,6 +20,8 @@ const Profile = () => {
   // Estados para os campos editáveis
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
+  const [bio, setBio] = useState("");
+  const [socialLinks, setSocialLinks] = useState([]);
 
   useEffect(() => {
     async function fetchUser() {
@@ -41,17 +42,25 @@ const Profile = () => {
     fetchUser();
   }, []);
 
-  // Atualiza os estados dos campos editáveis quando os dados do usuário são carregados
   useEffect(() => {
     if (userData) {
       setName(userData.firstName);
       setLocation(userData.location || "");
+      setBio(userData.description || "");
+      if (userData.socialMedia) {
+        setSocialLinks([
+          { href: userData.socialMedia.gitProfile || "", className: "fa fa-github" },
+          { href: userData.socialMedia.linkedinProfile || "", className: "fa fa-linkedin-square" },
+          { href: userData.socialMedia.instagramProfile || "", className: "fa fa-instagram" },
+        ]);
+      } else {
+        setSocialLinks([]);
+      }
     }
   }, [userData]);
 
   if (!userData) return <div>Carregando...</div>;
 
-  // Objeto para exibição no componente UserProfile
   const user = {
     picture: userData.profilePicture,
     name: userData.firstName,
@@ -60,12 +69,21 @@ const Profile = () => {
   };
 
   const handleEditProfile = () => {
-    setIsEditing(true);
-    setSaveVisible(true);
+    if (isEditing) {
+      setName(userData.firstName);
+      setLocation(userData.location || "");
+      setIsEditing(false);
+      setSaveVisible(false);
+    } else {
+      setIsEditing(true);
+      setSaveVisible(true);
+    }
   };
 
   const handleSaveProfile = async () => {
-    // Validações simples
+    console.log("Botão Salvar clicado");
+    console.log("Nome:", name, "Localização:", location);
+
     if (!name.trim()) {
       setNameError("O nome é obrigatório.");
     } else {
@@ -88,19 +106,29 @@ const Profile = () => {
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.userId;
 
-        // Mescla os dados atuais com os campos atualizados.
-        const updatedData = {
-          ...userData, // Inclui todos os atributos atuais do usuário
-          firstName: name, // Atualiza o nome
-          location: location, // Atualiza a localização (caso faça parte do modelo)
+        const updatedSocialMedia = {
+          gitProfile: socialLinks[0]?.href || "",
+          linkedinProfile: socialLinks[1]?.href || "",
+          instagramProfile: socialLinks[2]?.href || "",
         };
 
-        // Chama o endpoint de atualização com os dados completos
+        const updatedData = {
+          ...userData,
+          firstName: name,
+          lastName: userData.lastName,
+          email: userData.email,
+          description: bio,
+          birthDate: userData.birthDate,
+          location: location,
+          socialMedia: updatedSocialMedia,
+          profilePicture: userData.profilePicture,
+        };
+
         const updatedUser = await userService.updateUser(userId, updatedData);
-        // Atualiza o estado com os dados retornados pela API
         setUserData(updatedUser);
         setIsEditing(false);
         setSaveVisible(false);
+        console.log("Perfil atualizado com sucesso!");
       } catch (error) {
         console.error("Erro ao atualizar perfil:", error);
       }
@@ -116,59 +144,20 @@ const Profile = () => {
               user={user}
               isEditing={isEditing}
               handleEditProfile={handleEditProfile}
+              name={name}
+              location={location}
+              setName={setName}
+              setLocation={setLocation}
+              nameError={nameError}
+              locationError={locationError}
           />
-
-          {isEditing && (
-              <div className="edit-fields">
-                <label>
-                  Nome:
-                  <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                  />
-                </label>
-                {nameError && <span className="error">{nameError}</span>}
-
-                <label>
-                  Localização:
-                  <input
-                      type="text"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                  />
-                </label>
-                {locationError && <span className="error">{locationError}</span>}
-              </div>
-          )}
 
           <UserBio
-              bio={userData.description}
+              bio={bio}
+              socialLinks={socialLinks}
               isEditing={isEditing}
-              // Implemente a edição da bio se desejar
-          />
-
-          <SocialMedias
-              links={[
-                {
-                  href: userData.socialMedia?.gitProfile || "",
-                  className: "fa fa-github",
-                },
-                {
-                  href: userData.socialMedia?.linkedinProfile || "",
-                  className: "fa fa-linkedin-square",
-                },
-                {
-                  href: userData.socialMedia?.instagramProfile || "",
-                  className: "fa fa-instagram",
-                },
-                {
-                  href: userData.socialMedia?.discordProfile || "",
-                  className: "fa fa-discord",
-                },
-              ]}
-              isEditing={isEditing}
-              // Implemente a edição dos links se desejar
+              setBio={setBio}
+              setSocialLinks={setSocialLinks}
           />
 
           {saveVisible && (
