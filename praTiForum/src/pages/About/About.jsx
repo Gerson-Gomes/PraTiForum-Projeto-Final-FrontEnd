@@ -4,11 +4,13 @@ import "./About.css";
 import Sidebar from "../../Organism/Sidebar";
 import HeaderMain from "../../Molecule/Header/HeaderMain/HeaderMain";
 import Footer from "../../Molecule/footer/footer";
+import { useAuth } from "../../AuthContext";
 
 const About = () => {
+  const { isLogged } = useAuth()
   return (
     <>
-      <HeaderMain />
+      {isLogged ? <HeaderLogado /> : <HeaderMain />}
       <Sidebar />
 
       <section id="nossa-equipe">
@@ -17,8 +19,8 @@ const About = () => {
           <p className="apresentation-description">
             Somos um grupo de 7 integrantes apaixonados por tecnologia e desenvolvimento de software. Cada um de nós contribuiu com suas habilidades e experiências para tornar este projeto uma realidade.
           </p>
-        </div>   
-    
+        </div>
+
         <CarouselPerson />
       </section>
       <Footer />
