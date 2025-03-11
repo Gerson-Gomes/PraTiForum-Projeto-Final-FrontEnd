@@ -26,11 +26,11 @@
 
 /* Estilos do Sidebar */
 .sidebar {
-  margin-top: 80px;
+  margin-top: 100px;
   position: fixed;
   width: 15%;
   background-color: #ffffff;
-  height: 100vh;
+  
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -70,6 +70,8 @@
 
 .sidebar ul li:hover {
   background-color: rgba(0, 123, 255, 0.1);
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .sidebar ul li.active a :hover {

@@ -16,8 +16,8 @@ const CarouselPerson = () => {
     {
       name: "Gabrielly Silva",
       image: "src/assets/images/gabrielly.jpeg",
-      linkedin: "https://www.linkedin.com/in/gabrielly-silva",
-      github: "https://github.com/gabrielly",
+      linkedin: "https://www.linkedin.com/in/gabriellydasi",
+      github: "https://github.com/gabriellydasi",
       role: "Desenvolvedora FullStack",
       location: "Pernambuco",
       description: "Apaixonada por tecnologia e inovação."
@@ -92,7 +92,7 @@ const CarouselPerson = () => {
     infinite: true,
     autoplay: true,
     autoplaySpeed: 1400,
-    speed: 1300,
+    speed: 2000,
     adaptiveHeight: true,
     slidesToShow: 3,
     slidesToScroll: 1,
