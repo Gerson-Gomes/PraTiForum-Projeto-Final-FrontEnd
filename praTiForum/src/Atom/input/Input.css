@@ -1,0 +1,27 @@
+.input-default {
+  margin: 10px;
+}
+
+.input-default label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.input-default input {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px; /* Ajuste o padding se necessário */
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #747775; /* Cor da borda */
+  width: 347px;
+  height: 53px; /* Defina a altura do input */
+  box-shadow: none; /* Garantir que não haja sombra */
+}
+
+@media (min-width:320px) and (max-width: 767px){
+  .input-default input {
+    width: 300px;
+  }
+}

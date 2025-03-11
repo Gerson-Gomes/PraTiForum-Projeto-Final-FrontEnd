@@ -1,0 +1,122 @@
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button.primary-button {
+  background-color: #007bff;
+  color: white;
+  animation: animate-outline 1s ease-out infinite;
+}
+
+button.login-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  width: 347px;
+  height: 45px;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes animate-outline {
+  from {
+    box-shadow: 0 0 0 0 #007bff;
+  }
+  to {
+    box-shadow: 0 0 0 10px rgba(79, 156, 249, 0);
+  }
+}
+
+button.postButton{
+  background-color: #007bff;
+  color: #ffffff;
+  position: relative;
+  left: 0%;
+  height: 3.25em;
+  padding: 0em 5em;
+  margin-bottom: 30px;
+}
+
+button.responderButton{
+  padding: "10px 15px";
+  background-Color: #fd8b68;
+  color: #ffffff;
+  border: "none";
+}
+
+button.responderButton:hover{
+  background-color: #E07050;
+}
+
+button.enviarButton{
+  padding: "10px 15px";
+  background-Color: #007bff;
+  color: #ffffff;
+  border: "none";
+}
+
+button.enviarButton:hover{
+  background-color: #0056b3;
+}
+
+button.cancelarButton{
+  padding: "10px 15px";
+  background-Color: #4F6D7A;
+  color: #ffffff;
+  border: "none";
+}
+
+button.cancelarButton:hover{
+  background-color: #3E5A68;
+}
+
+
+
+
+
+
+
+
+
+button.postButton:hover{
+  background-color: #0056b3;
+}
+
+
+
+button.tertiary-button{
+  background-color: #fd8b68;
+  color: white;
+}
+
+button.primary-button:hover {
+  background-color: #0056b3;
+}
+
+button.secondary-button {
+  background-color: white;
+  color: #007bff;
+  border: 1px solid #007bff; 
+}
+
+button.secondary-button:hover {
+  background-color: #0056b3;
+  color:white;
+}
+
+.postButton{
+  background-color: red;
+}
+
+@media (min-width:320px) and (max-width: 767px){
+  button.login-button{
+    width: 300px;
+  }
+}
+

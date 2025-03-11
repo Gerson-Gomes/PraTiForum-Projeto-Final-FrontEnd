@@ -1,0 +1,20 @@
+/* Heading.css */
+.heading {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #343735;
+  }
+  
+  .heading span {
+    color: #fd8b68;
+  }  
+
+  @media (min-width:320px) and (max-width: 767px){
+    .heading{
+      margin-top: 10%;
+      font-size: 1.8rem;
+      text-align: start;
+      text-size-adjust: 80%;
+    }
+  }

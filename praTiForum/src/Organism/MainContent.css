@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-content {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 60px 60px 100px 379px;
+  gap: 100px;
+}
+
+.text-and-buttons {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+}
+
+main {
+  flex: 1;
+}
+
+@media (min-width:320px) and (max-width: 767px){
+  .main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30% 10% 30% 10%;
+  }
+}

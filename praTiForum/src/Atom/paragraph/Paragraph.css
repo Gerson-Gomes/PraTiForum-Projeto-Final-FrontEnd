@@ -1,0 +1,17 @@
+/* Paragraph.css */
+.paragraph {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.125rem;
+    text-align: justify;
+    color: #383838;
+    line-height: 150%;
+    margin-top: 10px;
+  }
+
+  @media (min-width:320px) and (max-width: 767px){
+    .paragraph{
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 10%;
+    }
+  }

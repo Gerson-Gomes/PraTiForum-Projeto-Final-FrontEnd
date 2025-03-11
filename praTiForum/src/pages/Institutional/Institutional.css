@@ -1,0 +1,141 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+  margin-left: 15%; /* Espaço reservado para a sidebar */
+  padding: 20px;
+}
+
+#sobre {
+  margin-top: 5%;
+  padding: 20px;
+  
+}
+
+h2 {
+  font-family: "Montserrat", serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #003A77;
+}
+
+.start {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 0px 20px 0 20px;
+}
+
+.conteudo-sobre {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.descricao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.descricao-e-imagem {
+  display: flex;
+  align-items: flex-start;
+  gap: 120px;
+  margin-block-start: -30px;
+  align-content: flex-start;
+}
+
+.texto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.imagem {
+  display: flex;
+  align-items: center;
+}
+
+.imagem img {
+ width: auto;
+ height: 100%;
+ max-width: 400px;
+ border-radius: 8px;
+}
+
+#sobre h1, article h1 {
+  font-family: "Montserrat", serif;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 45px;
+  color: #3D3D3D;
+}
+
+#sobre p, article p {
+  font-family: "Montserrat", serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #000000;
+}
+
+article {
+  padding: 0px 20px 0 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  margin-top: 3%;
+}
+
+.button-container button {
+  font-family: "Montserrat", sans-serif;       
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #003A77;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.button-container button:hover {
+  background-color: #005BB5;
+}
+
+@media (min-width:320px) and (max-width: 767px){
+  .main-container{
+    margin: 15% 0% 0% 10%;
+  }
+
+  .conteudo-sobre {
+    flex-direction: column;
+  }
+
+  .descricao-e-imagem {
+    flex-direction: column;
+  }
+
+  .imagem img {
+    max-width: 100%;
+  }
+
+  .button-container button{
+    margin-left: -10%;
+  }
+} 
+  

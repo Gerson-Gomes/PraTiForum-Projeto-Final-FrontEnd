@@ -1,0 +1,155 @@
+.slick-track {
+  display: flex !important;
+  gap: 10px;
+}
+
+.container-carousel {
+  width: 50%;
+  padding: 0 60px;
+  position: relative;
+  max-width: 1400px;
+  margin: 55px auto;
+  text-align: center;
+  font-family: "Poppins", serif;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.membro-equipe {
+  padding: 20px;
+  gap: 25px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  background-color: #fd8b68;
+  border-radius: 0 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 1s ease, border 1s ease;
+  cursor: pointer;
+  min-width: 280px;
+  height: 240px;
+  justify-items: center;
+}
+
+.membro-equipe:hover {
+  background-color: #ff764c;
+}
+
+.membro-equipe figure {
+  margin: 0;
+  position: relative;
+}
+
+.membro-equipe img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 15%;
+}
+
+.membro-equipe figcaption {
+  margin-top: 80px;
+  font-weight: normal;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  display: inline-block;
+  color: #fff;
+}
+
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+  border: none;
+}
+
+.carousel-button.prev {
+  left: -50px;
+  color: #d9d9d9;
+  background-color: transparent;
+  z-index: 999;
+}
+
+.carousel-button.next {
+  right: -50px;
+  color: #d9d9d9;
+  background-color: transparent;
+  z-index: 999;
+}
+
+@media (max-width: 1800px) {
+  .membro-equipe {
+    min-width: 200px;
+ 
+  
+  }
+  .container-carousel {
+    width: 70%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .membro-equipe {
+    min-width: 200px;
+  }
+
+  .container-carousel {
+    width: 70%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container-carousel {
+    width: 65%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 950px) {
+  .slick-track {
+    gap: 10px;
+  }
+
+  .container-carousel {
+    width: 60%;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .slick-track {
+    gap: 0;
+  }
+
+  .container-carousel {
+    margin: 10px auto;
+  }
+
+  .carousel-button {
+    display: none;
+  }
+}

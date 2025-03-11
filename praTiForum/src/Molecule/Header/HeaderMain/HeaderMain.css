@@ -1,0 +1,149 @@
+/* HeaderMain.css */
+@font-face {
+  font-family: 'Poppins Light';
+  src: url(../../../assets/Fonts/Poppins/Poppins-Light.ttf);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header .logo {
+  width: 100px; /* Ajuste o tamanho do logo conforme necessário */
+}
+
+.header .header-buttons {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 7px;
+}
+
+.mobile-menu {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background-color: #ffffff;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 9px;
+}
+
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu li {
+  cursor: pointer;
+  list-style-type: none;
+  padding: 10px 20px;
+}
+
+.mobile-menu li:hover {
+  background-color: rgba(0, 123, 255, 0.1);;
+  border-radius: 9px;
+}
+
+.mobile-menu ul ul{
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #3D3D3D;
+  font-family: "Poppins Light", serif;
+  font-weight: 700;
+}
+
+
+@media (min-width: 1024px) {
+  .container-input {
+    display: none;
+  }
+}
+
+
+/* telas menores que 768px (mobile) */
+@media (min-width:320px) and (max-width: 767px) {
+
+  .container-input {
+    display: none;
+  }
+
+  .menu-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+  }
+
+  .menu-icon img {
+    margin: 25% 0 25% 30%;
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-logo{
+    margin-left: 70px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .header-buttons.buttons {
+    display: block;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%; 
+    left: 0; 
+    background: white;
+    width: 350px; 
+    height: 100vh;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+}
+
+/* css telas menores e tablets */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container-input {
+    display: none;
+  }
+
+ .header-logo{
+    margin-right: 950px;
+ }
+
+  .siderbar{
+    display: none;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%; 
+    left: 0; 
+    height: 100%;
+  }
+
+}
