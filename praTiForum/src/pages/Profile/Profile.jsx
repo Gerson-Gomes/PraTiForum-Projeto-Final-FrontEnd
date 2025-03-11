@@ -33,7 +33,7 @@ const Profile = () => {
         }
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.userId;
-        const data = await userService.getUser(userId);
+        const data = await userService.getUser(userId, token);
         setUserData(data);
       } catch (error) {
         console.error("Erro ao carregar os dados do usuário:", error);

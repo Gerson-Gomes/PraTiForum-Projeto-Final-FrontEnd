@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080/api", // URL base do backend
+  baseURL: "http://localhost:8080/api/", // URL base do backend
 });
 
 // Serviço de usuários
@@ -20,9 +20,9 @@ const userService = {
 
   // GET: Busca as informações do usuário pelo userId, enviando o token JWT para autenticação
   getUser: async (userId) => {
+    const token = localStorage.getItem("token");
     try {
-      const token = localStorage.getItem("token");
-      const response = await api.get(`/users/${userId}`, {
+      const response = await api.get(`users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ const userService = {
 
   // POST: Cadastra um novo usuário
   createUser: async (userData) => {
-    const response = await api.post("/register", userData);
+    const response = await api.post("auth/register", userData);
     return response.data;
   },
 
