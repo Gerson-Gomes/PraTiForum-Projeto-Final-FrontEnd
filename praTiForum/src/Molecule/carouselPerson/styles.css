@@ -1,6 +1,6 @@
 .slick-track {
   display: flex !important;
-  gap: 50px;
+  gap: 10px;
 }
 
 .container-carousel {
@@ -27,8 +27,9 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 1s ease, border 1s ease;
   cursor: pointer;
-  max-width: 220px;
+  min-width: 280px;
   height: 240px;
+  justify-items: center;
 }
 
 .membro-equipe:hover {
@@ -55,16 +56,19 @@
 
 .membro-equipe figcaption {
   margin-top: 80px;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 1.2rem;
   color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
 }
 
 .icon {
   display: inline-block;
   color: #fff;
-  padding: 4px 8px;
-  margin-left: 5px;
 }
 
 
@@ -82,38 +86,34 @@
 }
 
 .carousel-button.prev {
-  left: 10px;
-  color: #005682;
+  left: -50px;
+  color: #d9d9d9;
+  background-color: transparent;
   z-index: 999;
 }
 
 .carousel-button.next {
-  right: 5px;
-  color: #005682;
+  right: -50px;
+  color: #d9d9d9;
+  background-color: transparent;
   z-index: 999;
 }
 
-.carousel-button:hover {
-  background-color: rgba(180, 174, 174, 0.8);
-}
-
-
-
-
-@media (max-width: 1600px) {
+@media (max-width: 1800px) {
   .membro-equipe {
-    max-width: 180px;
-    padding: 25px;
+    min-width: 200px;
+ 
+  
   }
   .container-carousel {
-    width: 75%;
+    width: 70%;
     padding: 0 10px;
   }
 }
 
 @media (max-width: 1300px) {
   .membro-equipe {
-    max-width: 140px;
+    min-width: 200px;
   }
 
   .container-carousel {
@@ -135,12 +135,12 @@
   }
 
   .container-carousel {
-    width: 80%;
+    width: 60%;
     padding: 0 20px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 320px) {
   .slick-track {
     gap: 0;
   }
