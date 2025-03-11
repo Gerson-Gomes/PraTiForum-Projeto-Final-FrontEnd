@@ -22,9 +22,9 @@ const Institutional = () => {
                 <h1>+PraTi Fórum</h1>
                 <p>
                   Um espaço criado por estudantes, para estudantes, onde você pode
-                  compartilhar ideias, tirar dúvidas,<br />  colaborar em projetos e trocar
+                  compartilhar ideias, tirar dúvidas, colaborar em projetos e trocar
                   experiências. Nosso objetivo é fortalecer a comunidade e promover
-                  o <br /> aprendizado contínuo.
+                  o aprendizado contínuo.
                 </p>
               </div>
               <div className="imagem">
@@ -43,9 +43,9 @@ const Institutional = () => {
           <h1>Um trabalho de conclusão</h1>
           <p>
             Este fórum foi criado como projeto final da Formação Full Stack da
-            +PraTi. Aplicamos na prática tudo o<br /> que aprendemos, utilizando
+            +PraTi. Aplicamos na prática tudo o que aprendemos, utilizando
             tecnologias como JavaScript, React, Java, Spring Boot, SQL (...), além
-            de<br /> fortalecermos nossas habilidades de equipe e resolução de
+            de fortalecermos nossas habilidades de equipe e resolução de
             problemas.
           </p>
         </article>
