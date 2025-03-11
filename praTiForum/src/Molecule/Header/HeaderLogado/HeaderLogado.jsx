@@ -15,7 +15,7 @@ function HeaderLogado() {
         <InputSearch label="" tipo="text" placeholder="Pesquisar" className="" />
       </div>
       <div className="header-perfil">
-        <button id="perfilButton" onClick={() => navigate("/perfil-usuario${userId}")}>
+        <button id="perfilButton" onClick={() => navigate("/perfil-usuario")}>
           <ProfilePicture src={profileDefault} alt="Logo" size={50} />
         </button>
       </div>
