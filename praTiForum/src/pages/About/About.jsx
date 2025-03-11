@@ -5,6 +5,7 @@ import Sidebar from "../../Organism/Sidebar";
 import HeaderMain from "../../Molecule/Header/HeaderMain/HeaderMain";
 import Footer from "../../Molecule/footer/footer";
 import { useAuth } from "../../AuthContext";
+import HeaderLogado from "../../Molecule/Header/HeaderLogado/HeaderLogado.jsx";
 
 const About = () => {
   const { isLogged } = useAuth()
