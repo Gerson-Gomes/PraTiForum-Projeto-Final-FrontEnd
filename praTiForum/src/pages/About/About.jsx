@@ -10,7 +10,7 @@ const About = () => {
   const { isLogged } = useAuth()
   return (
     <>
-      {isLogged ? <HeaderLogado /> : <HeaderMain />}
+      <HeaderLogado/>
       <Sidebar />
 
       <section id="nossa-equipe">

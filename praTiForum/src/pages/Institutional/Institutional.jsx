@@ -10,7 +10,7 @@ const Institutional = () => {
   const { isLogged } = useAuth()
   return (
     <>
-      {isLogged ? <HeaderLogado /> : <HeaderMain />}
+      <HeaderLogado/>
       <Sidebar />
 
       <div className="main-container">
