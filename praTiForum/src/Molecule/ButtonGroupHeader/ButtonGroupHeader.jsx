@@ -16,11 +16,13 @@ function ButtonGroupHeader() {
       />
 
       {/* Botão de Cadastro */}
-      <Button
+      {/* 
+        <Button
         text="Cadastrar"
         className="primary-button"
         onClick={() => navigate("/cadastro")} // Navega para a página de cadastro
-      />      
+      />    
+      */}  
     </div>
 
     
