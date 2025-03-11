@@ -13,15 +13,15 @@ function ButtonGroup() {
         className="secondary-button"
         onClick={() => (window.location.href = "")}
       />
-      <Button
+      {/* <Button
         text="TESTE-PERFIL"
         className="primary-button"
         onClick={() => navigate("/perfil-usuario")}
-      />
+      /> */}
 
-<Button text="TESTE" className="primary-button" onClick={() => navigate("/logado")} />
+      {/* <Button text="TESTE" className="primary-button" onClick={() => navigate("/logado")} /> */}
     </div>
-    
+
   );
 }
 
