@@ -3,11 +3,14 @@ import "./Institutional.css";
 import Sidebar from "../../Organism/Sidebar";
 import HeaderMain from "../../Molecule/Header/HeaderMain/HeaderMain";
 import Footer from "../../Molecule/footer/footer";
+import { useAuth } from "../../AuthContext";
+import HeaderLogado from "../../Molecule/Header/HeaderLogado/HeaderLogado";
 
 const Institutional = () => {
+  const { isLogged } = useAuth()
   return (
     <>
-      <HeaderMain />
+      {isLogged ? <HeaderLogado /> : <HeaderMain />}
       <Sidebar />
 
       <div className="main-container">
