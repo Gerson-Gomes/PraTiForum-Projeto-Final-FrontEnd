@@ -4,8 +4,11 @@
     flex-direction: column;
     gap: 20px;
     margin-bottom: 22px;
+    text-align: justify;
   }  
 
   @media (min-width:320px) and (max-width: 767px) {
-   
+   .title-and-text {
+    text-align: justify;
+   }
   }

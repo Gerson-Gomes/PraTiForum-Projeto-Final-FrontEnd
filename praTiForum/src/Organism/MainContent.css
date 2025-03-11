@@ -28,10 +28,9 @@ main {
 @media (min-width:320px) and (max-width: 767px){
   .main-content{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 30% 10% 30% 10%;
   }
-
-
 }
